@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eldermoraes</groupId>
-    <artifactId>beanvalidation</artifactId>
+    <artifactId>ch01-beanvalidation</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>beanvalidation</name>
+    <name>ch01-beanvalidation</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
