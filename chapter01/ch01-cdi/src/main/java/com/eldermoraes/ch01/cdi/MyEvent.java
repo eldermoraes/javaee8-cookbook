@@ -4,11 +4,11 @@ package com.eldermoraes.ch01.cdi;
  *
  * @author eldermoraes
  */
-public class ExampleEvent {
+public class MyEvent {
     
     private final String value;
     
-    public ExampleEvent(String value){
+    public MyEvent(String value){
         this.value = value;
     }
     
