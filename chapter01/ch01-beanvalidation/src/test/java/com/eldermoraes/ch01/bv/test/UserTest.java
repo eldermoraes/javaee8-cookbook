@@ -1,6 +1,6 @@
-package com.eldermoraes.beanvalidation.test;
+package com.eldermoraes.ch01.bv.test;
 
-import com.eldermoraes.beanvalidation.User;
+import com.eldermoraes.ch01.bv.User;
 import java.util.Arrays;
 import java.util.Set;
 import javax.validation.ConstraintViolation;

@@ -1,4 +1,4 @@
-package com.eldermoraes.beanvalidation;
+package com.eldermoraes.ch01.bv;
 
 import java.util.List;
 import javax.validation.constraints.Email;
