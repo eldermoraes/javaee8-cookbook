@@ -30,18 +30,6 @@
             <version>7.0</version>
         </dependency>
         
-        <!--<dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>2.26-b09</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-sse</artifactId>
-            <version>2.26-b09</version>
-            <scope>compile</scope>
-        </dependency>-->
     </dependencies>
     
     <build>
