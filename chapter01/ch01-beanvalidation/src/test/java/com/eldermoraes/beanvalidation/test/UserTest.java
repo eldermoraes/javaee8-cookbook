@@ -19,9 +19,6 @@ public class UserTest {
     
     private static Validator VALIDATOR;
     
-    public UserTest() {
-    }
-    
     @BeforeClass
     public static void setUpClass() {
         VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
