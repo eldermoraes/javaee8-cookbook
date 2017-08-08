@@ -5,7 +5,6 @@
     <groupId>com.eldermoraes</groupId>
     <artifactId>ch01-cdi</artifactId>
     <version>1.0</version>
-    <packaging>war</packaging>
 
     <name>ch01-cdi</name>
 
