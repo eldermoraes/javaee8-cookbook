@@ -21,15 +21,29 @@
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.1-m09</version>
+            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
-            <scope>provided</scope>
         </dependency>
+        
+        <!--<dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>2.26-b09</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-sse</artifactId>
+            <version>2.26-b09</version>
+            <scope>compile</scope>
+        </dependency>-->
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -53,6 +67,7 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>    
+
 
 </project>
