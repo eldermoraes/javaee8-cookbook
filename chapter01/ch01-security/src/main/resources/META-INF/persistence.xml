@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+    <persistence-unit name="ch01-security-pu">
+        <jta-data-source>userDb</jta-data-source>
+        <non-jta-data-source>userDbNonJtaUnmanaged</non-jta-data-source>
+        <class>com.eldermoraes.ch01.security.User</class>
+
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+        </properties>
+        
+    </persistence-unit>
+</persistence>
