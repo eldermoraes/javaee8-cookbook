@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eldermoraes.ch01.jsf;
 
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -16,7 +13,7 @@ public class UserBean implements Serializable {
     private User user;
     
     public UserBean(){
-        user = new User("foo", "foo@gmail.com");
+        user = new User("Elder Moraes", "elder@eldermoraes.com");
     }
 
     public User getUser() {
@@ -28,7 +25,8 @@ public class UserBean implements Serializable {
     }
     
     public void userAction(){
-        // NOPE
+        FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage("Name|Password welformed"));
     }
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eldermoraes.ch01.jsf;
 
 import javax.faces.application.FacesMessage;
@@ -16,11 +11,9 @@ import javax.faces.validator.ValidatorException;
 public class UserValidator implements Validator<User> {
 
     @Override
-    public void validate(FacesContext fc, UIComponent uic, User t) throws ValidatorException {
-        // reject yahoo e-mail addresses
-        String email = t.getEmail();
-        if(email.contains("yahoo")){
-            throw new ValidatorException(new FacesMessage(null, "Yahoo domain not supported !"));
+    public void validate(FacesContext fc, UIComponent uic, User user) throws ValidatorException {
+        if(!user.getEmail().contains("@")){
+            throw new ValidatorException(new FacesMessage(null, "Malformed e-mail"));
         }
     }
     
