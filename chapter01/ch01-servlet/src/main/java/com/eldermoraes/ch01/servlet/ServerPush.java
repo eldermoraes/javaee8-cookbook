@@ -31,7 +31,7 @@ public class ServerPush extends HttpServlet {
             html.append("<html>");
             html.append("<center>");
             html.append("<img src='images/javaee-logo.png'><br>");
-            html.append("<h3>This image was pushed by ServerPush</h3>");
+            html.append("<h2>Image pushed by ServerPush</h2>");
             html.append("</center>");
             html.append("</html>");
             writer.write(html.toString());
