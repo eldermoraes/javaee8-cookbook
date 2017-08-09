@@ -17,13 +17,13 @@ public class JPointer {
     
     
     public static void main(String[] args) throws IOException{
-        try (InputStream is = JPointer.class.getResourceAsStream("/user.json");
+        try (InputStream is = JPointer.class.getClassLoader().getResourceAsStream("user.json");
              JsonReader jr = Json.createReader(is)) {
             
             JsonStructure js = jr.read();
-            JsonPointer jp = new JsonPointerImpl("/user/name");
+            JsonPointer jp = new JsonPointerImpl("/user/profile");
             JsonValue jv = jp.getValue(js);
-            System.out.println("value: " + jv);
+            System.out.println("profile: " + jv);
 
         }
     }
