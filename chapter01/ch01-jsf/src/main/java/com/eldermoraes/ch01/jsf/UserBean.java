@@ -16,17 +16,17 @@ public class UserBean implements Serializable {
         user = new User("Elder Moraes", "elder@eldermoraes.com");
     }
 
+    public void userAction(){
+        FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage("Name|Password welformed"));
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-    
-    public void userAction(){
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage("Name|Password welformed"));
     }
     
 }

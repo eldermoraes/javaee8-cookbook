@@ -6,6 +6,6 @@
         <title>User MVC</title>
     </head>
     <body>
-        <a href="http://localhost:8080/ch01-mvc/view/userController">http://localhost:8080/ch01-mvc/view/userController</a>
+        <a href="http://localhost:8080/ch01-mvc/webresources/userController">http://localhost:8080/ch01-mvc/webresources/userController</a>
     </body>
 </html>

@@ -14,12 +14,11 @@ import org.glassfish.json.JsonPointerImpl;
  * @author eldermoraes
  */
 public class JPointer {
-    
-    
-    public static void main(String[] args) throws IOException{
+
+    public static void main(String[] args) throws IOException {
         try (InputStream is = JPointer.class.getClassLoader().getResourceAsStream("user.json");
-             JsonReader jr = Json.createReader(is)) {
-            
+                JsonReader jr = Json.createReader(is)) {
+
             JsonStructure js = jr.read();
             JsonPointer jp = new JsonPointerImpl("/user/profile");
             JsonValue jv = jp.getValue(js);
