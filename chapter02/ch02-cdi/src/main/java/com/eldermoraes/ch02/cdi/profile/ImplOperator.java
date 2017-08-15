@@ -16,8 +16,9 @@ import javax.enterprise.inject.Default;
 public class ImplOperator implements UserProfile{
 
     @Override
-    public void profile() {
+    public ProfileType type() {
         System.out.println("User is operator");
+        return ProfileType.OPERATOR;
     }
     
 }

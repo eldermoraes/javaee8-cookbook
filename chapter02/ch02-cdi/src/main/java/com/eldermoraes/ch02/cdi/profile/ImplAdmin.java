@@ -13,8 +13,9 @@ package com.eldermoraes.ch02.cdi.profile;
 public class ImplAdmin implements UserProfile{
 
     @Override
-    public void profile() {
+    public ProfileType type() {
         System.out.println("User is admin");
+        return ProfileType.ADMIN;
     }
     
 }
