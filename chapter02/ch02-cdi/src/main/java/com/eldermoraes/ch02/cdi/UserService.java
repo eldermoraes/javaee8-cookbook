@@ -6,7 +6,6 @@
 package com.eldermoraes.ch02.cdi;
 
 import com.eldermoraes.ch02.cdi.profile.Profile;
-import com.eldermoraes.ch02.cdi.profile.ProfileSelector;
 import com.eldermoraes.ch02.cdi.profile.ProfileType;
 import com.eldermoraes.ch02.cdi.profile.UserProfile;
 import java.io.IOException;
@@ -14,8 +13,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.enterprise.event.ObservesAsync;
-import javax.enterprise.inject.Any;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
