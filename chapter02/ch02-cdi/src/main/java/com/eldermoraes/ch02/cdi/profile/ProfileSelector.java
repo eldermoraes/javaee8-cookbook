@@ -11,10 +11,10 @@ import javax.enterprise.util.AnnotationLiteral;
  *
  * @author eldermoraes
  */
-public class ProfileSelector extends AnnotationLiteral implements Profile{
+public class ProfileSelector extends AnnotationLiteral<Profile> implements Profile{
 
     private final ProfileType type;
-    
+
     public ProfileSelector(ProfileType type){
         this.type = type;   
     }

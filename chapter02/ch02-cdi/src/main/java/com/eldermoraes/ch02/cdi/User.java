@@ -6,13 +6,12 @@
 package com.eldermoraes.ch02.cdi;
 
 import java.io.Serializable;
-import javax.enterprise.inject.Produces;
 
 /**
  *
  * @author eldermoraes
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
     private String name;
     private String email;
@@ -32,7 +31,7 @@ public class User implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public User(String name, String email) {
         this.name = name;
         this.email = email;
@@ -43,9 +42,4 @@ public class User implements Serializable{
         return "User{" + "name=" + name + ", email=" + email + '}';
     }
 
-    @Produces
-    public User getUser(){
-        return new User("Elder Moraes", "elder@eldermoraes.com");
-    }
-    
 }
