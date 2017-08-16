@@ -8,6 +8,7 @@ package com.eldermoraes.ch02.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends HttpServlet {
+    
+    private User user;
+    
+    @PostConstruct
+    public void instantiateUser(){
+        user = new User("Elder Moraes", "elder@eldermoraes.com");
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,8 +55,9 @@ public class UserServlet extends HttpServlet {
             out.println("<title>Servlet UserServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h2>Servlet UserServlet at " + request.getContextPath() + "</h2>");
             out.println("<h2>Now: " + new Date() + "</h2>");
+            out.println("<h2>User: " + user.getName() + "/" + user.getEmail() + "</h2>");
             out.println("</body>");
             out.println("</html>");
         }
