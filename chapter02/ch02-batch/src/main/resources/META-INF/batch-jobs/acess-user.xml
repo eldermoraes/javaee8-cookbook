@@ -7,9 +7,6 @@
             <reader ref="userReader"/>
             <processor ref="userProcessor"/>
             <writer ref="userWriter"/>
-            <skippable-exception-classes>
-                <include class="java.lang.NumberFormatException"/>
-            </skippable-exception-classes>
         </chunk>
     </step>
 </job>

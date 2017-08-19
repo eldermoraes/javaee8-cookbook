@@ -5,13 +5,13 @@ import java.util.Properties;
 import javax.batch.operations.JobOperator;
 import javax.batch.operations.JobStartException;
 import javax.batch.runtime.BatchRuntime;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Named
-@RequestScoped
+@Stateless
 public class UserBean {
 
     @PersistenceContext
