@@ -46,7 +46,7 @@ public class Ch02JpaTest {
     }
     
     @Test
-    public void validTransaction() throws Exception{
+    public void persistData() throws Exception{
         User user  = new User(null, "Elder Moraes", "elder@eldermoraes.com");
         
         userBean.add(user);
