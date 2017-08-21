@@ -33,8 +33,8 @@ public class UserCacheBean {
     protected void loadCache() {
         List<User> list = em.createNamedQuery("").getResultList();
 
-        list.forEach((cidade) -> {
-            cache.add(cidade);
+        list.forEach((user) -> {
+            cache.add(user);
         });
     }
 
