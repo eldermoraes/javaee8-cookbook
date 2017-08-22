@@ -5,7 +5,7 @@
  */
 package com.eldermoraes.ch02.jpa;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -14,10 +14,10 @@ import javax.persistence.PersistenceContextType;
  *
  * @author eldermoraes
  */
-@Stateful
+@Stateless
 public class UserBean {
 
-    @PersistenceContext(unitName = "ch02-jpa-pu", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "ch02-jpa-pu", type = PersistenceContextType.TRANSACTION)
     private EntityManager em;
     
     public void add(User user){
