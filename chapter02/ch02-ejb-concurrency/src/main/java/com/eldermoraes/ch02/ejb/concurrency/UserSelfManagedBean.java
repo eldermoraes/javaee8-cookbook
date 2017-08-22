@@ -19,11 +19,11 @@ public class UserSelfManagedBean {
 
     private int userCount;
 
-    public synchronized int getUserCount() {
+    public int getUserCount() {
         return userCount;
     }
     
-    public void addUser(){
+    public synchronized void addUser(){
         userCount++;
     }
 }
