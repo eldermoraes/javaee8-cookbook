@@ -1,0 +1,10 @@
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/Application.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/User.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/UserService.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/profile/ImplOperator.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/profile/ProfileType.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/profile/ProfileSelector.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/profile/Profile.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/profile/UserProfile.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/UserFactory.java
+/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-cdi/src/main/java/com/eldermoraes/ch02/cdi/profile/ImplAdmin.java

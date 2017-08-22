@@ -1,0 +1,5 @@
+com/eldermoraes/ch02/batch/UserReader.class
+com/eldermoraes/ch02/batch/UserBean.class
+com/eldermoraes/ch02/batch/User.class
+com/eldermoraes/ch02/batch/UserWriter.class
+com/eldermoraes/ch02/batch/UserProcessor.class
