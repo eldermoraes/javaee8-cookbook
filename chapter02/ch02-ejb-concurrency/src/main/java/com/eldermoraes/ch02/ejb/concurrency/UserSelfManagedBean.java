@@ -5,11 +5,8 @@
  */
 package com.eldermoraes.ch02.ejb.concurrency;
 
-import javax.ejb.AccessTimeout;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
-import javax.ejb.Lock;
-import javax.ejb.LockType;
 import javax.ejb.Singleton;
 
 /**
@@ -17,18 +14,15 @@ import javax.ejb.Singleton;
  * @author eldermoraes
  */
 @Singleton
-@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER) //redundant
-@AccessTimeout(value = 10000)
-public class UserMethodBean {
+@ConcurrencyManagement(ConcurrencyManagementType.BEAN)
+public class UserSelfManagedBean {
 
     private int userCount;
-    
-    @Lock(LockType.READ)
-    public int getUserCount(){
+
+    public synchronized int getUserCount() {
         return userCount;
     }
     
-    @Lock(LockType.WRITE)
     public void addUser(){
         userCount++;
     }

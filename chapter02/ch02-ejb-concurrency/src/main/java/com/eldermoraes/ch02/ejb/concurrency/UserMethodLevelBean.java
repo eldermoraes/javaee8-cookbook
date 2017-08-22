@@ -18,18 +18,18 @@ import javax.ejb.Singleton;
  */
 @Singleton
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER) //redundant
-@Lock(LockType.READ)
 @AccessTimeout(value = 10000)
-public class UserClassBeanBean {
+public class UserMethodLevelBean {
 
     private int userCount;
-
-    public int getUserCount() {
+    
+    @Lock(LockType.READ)
+    public int getUserCount(){
         return userCount;
     }
     
+    @Lock(LockType.WRITE)
     public void addUser(){
         userCount++;
     }
-
 }
