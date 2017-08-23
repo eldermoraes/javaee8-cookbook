@@ -3,9 +3,11 @@ package com.eldermoraes.ch02.batch;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "UserTab")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
