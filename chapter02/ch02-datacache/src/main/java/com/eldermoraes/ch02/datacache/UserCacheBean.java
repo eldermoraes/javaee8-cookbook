@@ -12,6 +12,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 /**
  *
@@ -27,11 +28,10 @@ public class UserCacheBean {
     private EntityManager em;
 
     public UserCacheBean() {
-
     }
 
     protected void loadCache() {
-        List<User> list = em.createNamedQuery("").getResultList();
+        List<User> list = em.createQuery("SELECT u FROM USER as u").getResultList();
 
         list.forEach((user) -> {
             cache.add(user);
@@ -39,7 +39,7 @@ public class UserCacheBean {
     }
 
     @Lock(LockType.READ)
-    public List<User> read() {
+    public List<User> get() {
         return cache.stream().collect(Collectors.toList());
     }
 
