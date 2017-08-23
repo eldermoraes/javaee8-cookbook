@@ -3,7 +3,7 @@
      xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
      version="1.0">
     <step id="loadData">
-        <chunk item-count="3" skip-limit="5">
+        <chunk item-count="3">
             <reader ref="userReader"/>
             <processor ref="userProcessor"/>
             <writer ref="userWriter"/>
