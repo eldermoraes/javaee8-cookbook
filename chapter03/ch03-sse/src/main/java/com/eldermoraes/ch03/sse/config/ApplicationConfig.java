@@ -24,7 +24,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.eldermoraes.ch03.sse.DomainRes.class);
+        resources.add(com.eldermoraes.ch03.sse.ServerEvent.class);
     }
     
 }

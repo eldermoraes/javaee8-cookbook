@@ -28,8 +28,8 @@ import javax.ws.rs.sse.SseEventSink;
  *
  * @author eldermoraes
  */
-@Path("domainres")
-public class DomainRes {
+@Path("server-event")
+public class ServerEvent {
 
     private static final Map<Integer, MyEvent> EVENTS = new ConcurrentHashMap<>();
 
@@ -42,7 +42,7 @@ public class DomainRes {
         EVENTS.put(process.getId(), process);
         Executors.newSingleThreadExecutor().execute(process);
 
-        final URI uri = UriBuilder.fromResource(DomainRes.class).path("process/{id}").build(process.getId());
+        final URI uri = UriBuilder.fromResource(ServerEvent.class).path("process/{id}").build(process.getId());
         return Response.created(uri).build();
     }
 

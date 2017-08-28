@@ -1,0 +1,97 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.eldermoraes.ch03.sse;
+
+import java.io.Serializable;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.sse.SseEventSource;
+
+/**
+ *
+ * @author eldermoraes
+ */
+@ViewScoped
+@Named
+public class EventBean implements Serializable {
+
+    @NotNull
+    @Positive
+    private Integer countClient;
+
+    public void sendEvents() throws URISyntaxException, InterruptedException {
+        WebTarget target = ClientBuilder.newClient().target(URI.create("http://localhost:8080/ch03-sse/"));
+        Response response = target.path("webresources/server-event/start")
+                .queryParam("testSources", countClient)
+                .request()
+                .post(Entity.json(new Date()), Response.class);
+
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Start status: " + response.getStatus()));
+
+        final Map<Integer, Integer> messageCounts = new ConcurrentHashMap<>(countClient);
+        final CountDownLatch doneLatch = new CountDownLatch(countClient);
+        final SseEventSource[] sources = new SseEventSource[countClient];
+
+        final String processUriString = target.getUri().relativize(response.getLocation()).toString();
+        final WebTarget sseTarget = target.path(processUriString).queryParam("testSource", "true");
+
+        for (int i = 0; i < countClient; i++) {
+            final AtomicInteger messageCount = new AtomicInteger(0);
+            final int id = i;
+            sources[id] = SseEventSource.target(sseTarget).build();
+            sources[id].register((event) -> {
+                messageCount.incrementAndGet();
+                final String message = event.readData(String.class);
+                if ("done".equals(message)) {
+                    messageCounts.put(id, messageCount.get());
+                    doneLatch.countDown();
+                }
+            });
+            sources[i].open();
+        }
+
+        doneLatch.await(10, TimeUnit.SECONDS);
+
+        for (SseEventSource source : sources) {
+            source.close();
+        }
+
+        for (int i = 0; i < countClient; i++) {
+            final Integer count = messageCounts.get(i);
+            
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Message " + i + " received: " + count));
+        }
+    }
+
+    public Integer getCountClient() {
+        return countClient;
+    }
+
+    public void setCountClient(Integer countClient) {
+        this.countClient = countClient;
+    }
+
+}
