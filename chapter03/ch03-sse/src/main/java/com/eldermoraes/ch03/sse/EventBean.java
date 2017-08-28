@@ -8,20 +8,16 @@ package com.eldermoraes.ch03.sse;
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
@@ -45,12 +41,12 @@ public class EventBean implements Serializable {
         Response response = target.path("webresources/server-event/start")
                 .queryParam("testSources", countClient)
                 .request()
-                .post(Entity.json(new Date()), Response.class);
+                .post(Entity.json(""), Response.class);
 
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Start status: " + response.getStatus()));
+                new FacesMessage("Start status: " + response.getStatusInfo() + " [" + response.getStatus() + "]"));
 
-        final Map<Integer, Integer> messageCounts = new ConcurrentHashMap<>(countClient);
+        final Map<Integer, String> messageCounts = new ConcurrentHashMap<>(countClient);
         final CountDownLatch doneLatch = new CountDownLatch(countClient);
         final SseEventSource[] sources = new SseEventSource[countClient];
 
@@ -58,14 +54,14 @@ public class EventBean implements Serializable {
         final WebTarget sseTarget = target.path(processUriString).queryParam("testSource", "true");
 
         for (int i = 0; i < countClient; i++) {
-            final AtomicInteger messageCount = new AtomicInteger(0);
+            String eventMessage = "Timestamp is " + System.currentTimeMillis();
             final int id = i;
             sources[id] = SseEventSource.target(sseTarget).build();
             sources[id].register((event) -> {
-                messageCount.incrementAndGet();
                 final String message = event.readData(String.class);
+                
                 if ("done".equals(message)) {
-                    messageCounts.put(id, messageCount.get());
+                    messageCounts.put(id, eventMessage);
                     doneLatch.countDown();
                 }
             });
@@ -79,7 +75,7 @@ public class EventBean implements Serializable {
         }
 
         for (int i = 0; i < countClient; i++) {
-            final Integer count = messageCounts.get(i);
+            final String count = messageCounts.get(i);
             
             FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage("Message " + i + " received: " + count));
