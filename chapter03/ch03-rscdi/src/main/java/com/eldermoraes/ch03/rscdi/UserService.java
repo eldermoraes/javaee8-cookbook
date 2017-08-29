@@ -1,26 +1,19 @@
 package com.eldermoraes.ch03.rscdi;
 
 import java.io.Serializable;
-import javax.annotation.Priority;
-import javax.enterprise.event.Event;
-import javax.enterprise.event.Observes;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.interceptor.Interceptor;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
  * @author eldermoraes
  */
-@ViewScoped
-@Named
+@Path("userservice")
 public class UserService implements Serializable{
-    
-    @Inject
-    private User userProducer;
     
     @Inject
     private UserBean userBean;
@@ -29,54 +22,24 @@ public class UserService implements Serializable{
     private User userLocal;
     
     @Inject
-    private Event<User> userEvent;
-    
-    @Inject
     private void setUserLocal(){
         long ts = System.currentTimeMillis();
         userLocal = new User("Local" + ts,  "user" + ts + "@eldermoraes.com");        
     }
     
-    public void loadUsers(){
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                new FacesMessage("userProducer: " + userProducer));
-        
+    @GET
+    @Path("getUserFromBean")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserFromBean(){
         userFromBean = userBean.getUser();
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                new FacesMessage("userBean: " + userFromBean));
-        
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                new FacesMessage("userLocal: " + userLocal));  
-        
-        fireEvents(userProducer);
-        fireEvents(userFromBean);
-        fireEvents(userLocal);
-        
-    }
-    
-    private void fireEvents(User user){
-        userEvent.fire(userProducer);
-    }
-    
-    
-    public void sendUserEvent(@Observes User user){
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                new FacesMessage("Observed: " + user));        
-    }
-    
-    public void sendUserEventOrderedFirst(@Observes @Priority(Interceptor.Priority.APPLICATION + 100) User user){
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                new FacesMessage("ObservedOrderedFirst: " + user));        
+        return Response.ok(userFromBean).build();
     }
 
-    public void sendUserEventOrderedSecond(@Observes @Priority(Interceptor.Priority.APPLICATION + 200) User user){
-        FacesContext.getCurrentInstance()
-                .addMessage(null,
-                new FacesMessage("ObservedOrderedSecond: " + user));        
+    @GET
+    @Path("getUserFromLocal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserFromLocal(){
+        return Response.ok(userLocal).build();
     }    
+    
 }
