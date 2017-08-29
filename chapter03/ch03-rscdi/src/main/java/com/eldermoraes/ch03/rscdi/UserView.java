@@ -5,7 +5,6 @@ import java.net.URI;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
