@@ -7,6 +7,9 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonBuilderFactory;
 import javax.json.JsonObject;
+import javax.json.JsonStructure;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 
 /**
  *
@@ -18,8 +21,19 @@ import javax.json.JsonObject;
 public class UserView implements Serializable{
     
     private static final JsonBuilderFactory BUILDERFACTORY = Json.createBuilderFactory(null);
+    private final Jsonb jsonBBuilder = JsonbBuilder.create();
     
-    public void loadArray(){
+    private String fromArray;
+    private String fromStructure;
+    private String fromUser;
+    
+    public void loadUserJson(){
+        loadFromArray();
+        loadFromStructure();
+        loadFromUser();
+    }
+    
+    private void loadFromArray(){
         JsonArray array = BUILDERFACTORY.createArrayBuilder()
                 .add(BUILDERFACTORY.createObjectBuilder()
                         .add("name", "User1")
@@ -30,11 +44,12 @@ public class UserView implements Serializable{
                 .add(BUILDERFACTORY.createObjectBuilder()
                         .add("name", "User3")
                         .add("email", "user3@eldermoraes.com"))                
-                .build();        
+                .build();    
+        fromArray = jsonBBuilder.toJson(array);
     }
     
-    public void loadStructure(){
-        JsonObject structure = BUILDERFACTORY.createObjectBuilder()
+    private void loadFromStructure(){
+        JsonStructure structure = BUILDERFACTORY.createObjectBuilder()
                 .add("name", "User1")
                 .add("email", "user1@eldermoraes.com")
                 .add("profiles", BUILDERFACTORY.createArrayBuilder()
@@ -43,9 +58,37 @@ public class UserView implements Serializable{
                                 .add("name", "Profile1"))
                         .add(BUILDERFACTORY.createObjectBuilder()
                                 .add("id", "2")
-                                .add("name", "Profiles")))
+                                .add("name", "Profile2")))
                 .build();
-        
+        fromStructure = jsonBBuilder.toJson(structure);
     }
     
+    private void loadFromUser(){
+        User user = new User("Elder Moraes", "elder@eldermoraes.com", new Integer[]{1,2,3});
+        fromUser = jsonBBuilder.toJson(user);
+    }
+
+    public String getFromArray() {
+        return fromArray;
+    }
+
+    public void setFromArray(String fromArray) {
+        this.fromArray = fromArray;
+    }
+
+    public String getFromStructure() {
+        return fromStructure;
+    }
+
+    public void setFromStructure(String fromStructure) {
+        this.fromStructure = fromStructure;
+    }
+    
+    public String getFromUser() {
+        return fromUser;
+    }
+
+    public void setFromUser(String fromUser) {
+        this.fromUser = fromUser;
+    }    
 }
