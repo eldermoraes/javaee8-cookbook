@@ -101,11 +101,9 @@ public class ServerEvent {
                 }
                 
                 sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "broadcast started...").build());
-                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "50%").build());
-                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "60%").build());
-                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "70%").build());
-                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "80%").build());
-                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "90%").build());                
+                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "Message 1").build());
+                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "Message 2").build());
+                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "Message 3").build());
                 sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "done").build());
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
