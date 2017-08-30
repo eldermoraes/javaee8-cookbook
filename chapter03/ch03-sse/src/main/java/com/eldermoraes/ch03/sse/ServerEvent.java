@@ -99,8 +99,8 @@ public class ServerEvent {
                 if (countDownLatch != null) {
                     countDownLatch.await(10, TimeUnit.SECONDS);
                 }
-
-                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "starting with " + id + " ...").build());
+                
+                sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "broadcast started...").build());
                 sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "50%").build());
                 sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "60%").build());
                 sseBroadcaster.broadcast(sse.newEventBuilder().name("progress").data(String.class, "70%").build());

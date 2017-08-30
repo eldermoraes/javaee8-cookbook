@@ -48,13 +48,17 @@ public class EventBean implements Serializable {
         final String processUriString = target.getUri().relativize(response.getLocation()).toString();
         final WebTarget sseTarget = target.path(processUriString).queryParam("testSource", "true");
 
+        final StringBuilder messageBroadcast = new StringBuilder();
+
         for (int i = 0; i < countClient; i++) {
             String eventMessage = "Timestamp is " + System.currentTimeMillis();
             final int id = i;
             sources[id] = SseEventSource.target(sseTarget).build();
             sources[id].register((event) -> {
                 final String message = event.readData(String.class);
-                
+
+                messageBroadcast.append(message).append("        ");
+
                 if ("done".equals(message)) {
                     messageCounts.put(id, eventMessage);
                     doneLatch.countDown();
@@ -69,11 +73,14 @@ public class EventBean implements Serializable {
             source.close();
         }
 
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(messageBroadcast.toString()));
+
         for (int i = 0; i < countClient; i++) {
             final String count = messageCounts.get(i);
-            
+
             FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Message " + i + " received: " + count));
+                    new FacesMessage("Thread " + i + " ended. " + count));
         }
     }
 
