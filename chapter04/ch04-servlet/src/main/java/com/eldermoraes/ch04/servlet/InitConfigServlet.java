@@ -2,8 +2,10 @@ package com.eldermoraes.ch04.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -19,8 +21,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "InitConfigServlet", urlPatterns = {"/InitConfigServlet"}, 
         initParams = {
-                @WebInitParam(name = "param1", value = "value1"),
-                @WebInitParam(name = "param2", value = "value2")
+                @WebInitParam(name = "key1", value = "value1"),
+                @WebInitParam(name = "key2", value = "value2"),
+                @WebInitParam(name = "key3", value = "value3"),
+                @WebInitParam(name = "key4", value = "value4"),
+                @WebInitParam(name = "key5", value = "value5")
         }
 )
 public class InitConfigServlet extends HttpServlet {
@@ -44,18 +49,17 @@ public class InitConfigServlet extends HttpServlet {
         if (param.isEmpty()){
             out.println("No params to show");
         } else{
-            param.forEach((k,v) -> out.println("param: " + k + ", value: " + v));
+            param.forEach((k,v) -> out.println("param: " + k + ", value: " + v + "<br />"));
         }
     }
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         System.out.println("init");
-        Enumeration<String> params = config.getInitParameterNames();
-        while (params.hasMoreElements()){
-            String key = config.getInitParameterNames().nextElement();
+        List<String> list = Collections.list(config.getInitParameterNames());
+        list.forEach((key) -> {
             param.put(key, config.getInitParameter(key));
-        }
+        });
     }
 
 }
