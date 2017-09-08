@@ -7,6 +7,14 @@
     <body>
         <a href="http://localhost:8080/ch04-servlet/InitConfigServlet">InitConfigServlet</a>
         <br />
-        <a href="http://localhost:8080/ch04-servlet/AsyncServlet?timestamp=8000">AsyncServlet</a>
+        <br />
+        <form action="AsyncServlet" method="GET">
+            <h2>AsyncServlet</h2>
+            Milliseconds
+            <br />
+            <input type="number" id="timestamp" name="timestamp" style="width: 200px" value="5000"/>
+            <button type="submit">Submit</button>
+        </form>
+
     </body>
 </html>

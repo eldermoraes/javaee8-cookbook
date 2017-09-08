@@ -21,30 +21,27 @@ public class AsyncServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         long startTime = System.currentTimeMillis();
-        System.out.println("AsyncServlet Begin::Name="
-                + Thread.currentThread().getName() + "::ID="
+        System.out.println("AsyncServlet Begin, Name="
+                + Thread.currentThread().getName() + ", ID="
                 + Thread.currentThread().getId());
  
         request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
  
         String time = request.getParameter("timestamp");
         int secs = Integer.valueOf(time);
-        // max 10 seconds
-        if (secs > 10000)
-            secs = 10000;
  
         AsyncContext asyncCtx = request.startAsync();
         asyncCtx.addListener(new AsyncWebListener());
-        asyncCtx.setTimeout(9000);
+        asyncCtx.setTimeout(30000);
  
         ThreadPoolExecutor executor = (ThreadPoolExecutor) request
                 .getServletContext().getAttribute("async-exec");
  
         executor.execute(new AsyncExecutor(asyncCtx, secs));
         long endTime = System.currentTimeMillis();
-        System.out.println("AsyncServlet Finish::Name="
-                + Thread.currentThread().getName() + "::ID="
-                + Thread.currentThread().getId() + "::Duration="
+        System.out.println("AsyncServlet Finish, Name="
+                + Thread.currentThread().getName() + ", ID="
+                + Thread.currentThread().getId() + ", Duration="
                 + (endTime - startTime) + " milliseconds.");
     }
  
