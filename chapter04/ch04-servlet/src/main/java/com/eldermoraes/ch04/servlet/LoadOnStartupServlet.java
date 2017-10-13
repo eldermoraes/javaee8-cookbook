@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
  *
  * @author eldermoraes
  */
-@WebServlet(name = "InitServlet", urlPatterns = {"/InitServlet"}, loadOnStartup = 1)
+@WebServlet(name = "LoadOnStartupServlet", urlPatterns = {"/LoadOnStartupServlet"}, loadOnStartup = 1)
 public class LoadOnStartupServlet extends HttpServlet {
 
     @Override
