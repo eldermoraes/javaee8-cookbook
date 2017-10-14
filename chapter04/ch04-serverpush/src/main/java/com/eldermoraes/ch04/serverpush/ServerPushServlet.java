@@ -22,12 +22,6 @@ public class ServerPushServlet extends HttpServlet {
         doRequest(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doRequest(request, response);
-    }
-    
     private void doRequest(HttpServletRequest request, HttpServletResponse response) throws IOException{
         String usePush = request.getParameter("usePush");
         
@@ -64,7 +58,13 @@ public class ServerPushServlet extends HttpServlet {
             html.append("</table>");
             
             html.append("<br>");
-            html.append("<h2>Image pushed by ServerPush</h2>");
+            
+            if ("true".equalsIgnoreCase(usePush)){
+                html.append("<h2>Image pushed by ServerPush</h2>");
+            } else{
+                html.append("<h2>Image loaded using HTTP/1.0</h2>");
+            }
+            
             html.append("</center>");
             html.append("</html>");
             writer.write(html.toString());
