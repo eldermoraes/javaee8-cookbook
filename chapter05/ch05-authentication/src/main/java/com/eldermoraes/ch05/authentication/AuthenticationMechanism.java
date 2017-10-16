@@ -6,7 +6,6 @@ import javax.security.enterprise.AuthenticationStatus;
 import javax.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
 import javax.security.enterprise.authentication.mechanism.http.HttpMessageContext;
 import static java.util.Arrays.asList;
-import static javax.security.enterprise.AuthenticationStatus.SEND_FAILURE;
 import java.util.HashSet;
 import javax.security.enterprise.credential.CallerOnlyCredential;
 import javax.security.enterprise.credential.Credential;
@@ -23,20 +22,16 @@ public class AuthenticationMechanism implements HttpAuthenticationMechanism {
 
             Credential credential = httpMessageContext.getAuthParameters().getCredential();
             if (!(credential instanceof CallerOnlyCredential)) {
-                throw new IllegalStateException("This authentication mechanism requires CallerOnlyCredential");
+                throw new IllegalStateException("Invalid mechanism");
             }
 
             CallerOnlyCredential callerOnlyCredential = (CallerOnlyCredential) credential;
 
             if ("user".equals(callerOnlyCredential.getCaller())) {
-                return httpMessageContext.notifyContainerAboutLogin("user", new HashSet<>(asList("role1", "role2")));
-            }
-
-            if ("uzer".equals(callerOnlyCredential.getCaller())) {
+                return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList("role1","role2")));
+            } else{
                 throw new AuthenticationException();
             }
-
-            return SEND_FAILURE;
 
         }
 
