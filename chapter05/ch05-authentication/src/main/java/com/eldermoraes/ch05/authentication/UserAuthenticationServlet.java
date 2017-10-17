@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @DeclareRoles({"role1", "role2", "role3"})
-@WebServlet("/userAuthServlet")
-public class UserAuthServlet extends HttpServlet {
+@WebServlet(name = "/UserAuthenticationServlet", urlPatterns = {"/UserAuthenticationServlet"})
+public class UserAuthenticationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,16 +26,11 @@ public class UserAuthServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String name = request.getParameter("name");
-
-        if (null != name) {
-
+        if (null != name || !"".equals(name)) {
             AuthenticationStatus status = securityContext.authenticate(
-                    request, response,
-                    withParams()
-                            .credential(
-                                    new CallerOnlyCredential(name)));
+                    request, response, withParams().credential(new CallerOnlyCredential(name)));
 
-            response.getWriter().write("Authenticated with status: " + status.name() + "\n");
+            response.getWriter().write("Authentication status: " + status.name() + "\n");
         }
 
         String principal = null;
@@ -43,14 +38,10 @@ public class UserAuthServlet extends HttpServlet {
             principal = request.getUserPrincipal().getName();
         }
 
-        response.getWriter().write("username: " + principal + "\n");
-
-        response.getWriter().write("User has role \"role1\": " + request.isUserInRole("role1") + "\n");
-        response.getWriter().write("User has role \"role2\": " + request.isUserInRole("role2") + "\n");
-        response.getWriter().write("User has role \"role3\": " + request.isUserInRole("role3") + "\n");
-
-        response.getWriter().write("User has access to /authServlet? " + securityContext.hasAccessToWebResource("/authServlet") + "\n");
-
+        response.getWriter().write("User: " + principal + "\n");
+        response.getWriter().write("Role \"role1\" access: " + request.isUserInRole("role1") + "\n");
+        response.getWriter().write("Role \"role2\" access: " + request.isUserInRole("role2") + "\n");
+        response.getWriter().write("Role \"role3\" access: " + request.isUserInRole("role3") + "\n");
+        response.getWriter().write("Access to /authServlet? " + securityContext.hasAccessToWebResource("/authServlet") + "\n");
     }
-
 }
