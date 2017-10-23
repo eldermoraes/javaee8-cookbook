@@ -7,15 +7,13 @@ import javax.security.enterprise.SecurityContext;
 import javax.security.enterprise.credential.CallerOnlyCredential;
 import static javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@DeclareRoles({"role1", "role2", "role3"})
+@DeclareRoles({Roles.ROLE1, Roles.ROLE2, Roles.ROLE3})
 @WebServlet(name = "/UserAuthorizationServlet", urlPatterns = {"/UserAuthorizationServlet"})
 public class UserAuthorizationServlet extends HttpServlet {
 
@@ -23,7 +21,19 @@ public class UserAuthorizationServlet extends HttpServlet {
 
     @Inject
     private SecurityContext securityContext;
-
+    
+    @Inject
+    private Role1Executor role1Executor;
+    
+    @Inject
+    private Role2Executor role2Executor;
+    
+    @Inject
+    private Role3Executor role3Executor;
+    
+    @Inject
+    private UserActivity userActivity;
+    
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -42,38 +52,41 @@ public class UserAuthorizationServlet extends HttpServlet {
             }
 
             response.getWriter().write("User: " + principal + "\n");
-            response.getWriter().write("Role \"role1\" access: " + request.isUserInRole("role1") + "\n");
-            response.getWriter().write("Role \"role2\" access: " + request.isUserInRole("role2") + "\n");
-            response.getWriter().write("Role \"role3\" access: " + request.isUserInRole("role3") + "\n");
+            response.getWriter().write("Role \"role1\" access: " + request.isUserInRole(Roles.ROLE1) + "\n");
+            response.getWriter().write("Role \"role2\" access: " + request.isUserInRole(Roles.ROLE2) + "\n");
+            response.getWriter().write("Role \"role3\" access: " + request.isUserInRole(Roles.ROLE3) + "\n");
 
-            RoleExecutor.RoleExecutable executable = null;
+            RoleExecutable executable = null;
 
-            if (request.isUserInRole("role1")) {
-                executable = new RoleExecutor().new Role1Executor();
-            } else if (request.isUserInRole("role2")) {
-                executable = new RoleExecutor().new Role2Executor();
-            } else if (request.isUserInRole("role3")) {
-                executable = new RoleExecutor().new Role3Executor();
+            if (request.isUserInRole(Roles.ROLE1)) {
+                executable = role1Executor;
+            } else if (request.isUserInRole(Roles.ROLE2)) {
+                executable = role2Executor;
+            } else if (request.isUserInRole(Roles.ROLE3)) {
+                executable = role3Executor;
             }
 
             if (executable != null) {
                 executable.run(() -> {
                     try {
-                        response.getWriter().write("role1Allowed: " + UserActivity.role1Allowed() + "\n");
+                        userActivity.role1Allowed();
+                        response.getWriter().write("role1Allowed executed: true\n");
                     } catch (Exception e) {
-                        response.getWriter().write("role1Allowed: " + e.getMessage() + "\n");
+                        response.getWriter().write("role1Allowed executed: false\n");
                     }
 
                     try {
-                        response.getWriter().write("role2Allowed: " + UserActivity.role2Allowed() + "\n");
+                        userActivity.role2Allowed();
+                        response.getWriter().write("role2Allowed executed: true\n");
                     } catch (Exception e) {
-                        response.getWriter().write("role2Allowed: " + e.getMessage() + "\n");
+                        response.getWriter().write("role2Allowed executed: false\n");
                     }
 
                     try {
-                        response.getWriter().write("role3Allowed: " + UserActivity.role3Allowed() + "\n");
+                        userActivity.role3Allowed();
+                        response.getWriter().write("role2Allowed executed: true\n");
                     } catch (Exception e) {
-                        response.getWriter().write("role3Allowed: " + e.getMessage() + "\n");
+                        response.getWriter().write("role2Allowed executed: false\n");
                     }
 
                 });
@@ -81,10 +94,18 @@ public class UserAuthorizationServlet extends HttpServlet {
             }
 
             try {
-                response.getWriter().write("anonymousAllowed: " + UserActivity.anonymousAllowed() + "\n");
+                userActivity.anonymousAllowed();
+                response.getWriter().write("anonymousAllowed executed: true\n");
             } catch (Exception e) {
-                response.getWriter().write("anonymousAllowed: " + e.getMessage() + "\n");
+                response.getWriter().write("anonymousAllowed executed: false\n");
             }
+            
+            try {
+                userActivity.noOneAllowed();
+                response.getWriter().write("noOneAllowed executed: true\n");
+            } catch (Exception e) {
+                response.getWriter().write("noOneAllowed executed: false\n");
+            }            
 
         } catch (Exception ex) {
             System.err.println(ex.getMessage());

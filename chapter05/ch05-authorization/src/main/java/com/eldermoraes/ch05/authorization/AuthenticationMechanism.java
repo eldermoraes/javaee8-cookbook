@@ -27,14 +27,17 @@ public class AuthenticationMechanism implements HttpAuthenticationMechanism {
 
             CallerOnlyCredential callerOnlyCredential = (CallerOnlyCredential) credential;
 
-            if ("user1".equals(callerOnlyCredential.getCaller())) {
-                return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList("role1")));
-            } else if ("user2".equals(callerOnlyCredential.getCaller())) {
-                return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList("role2")));
-            } else if ("user3".equals(callerOnlyCredential.getCaller())) {
-                return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList("role3")));
-            } else{
+            if (null == callerOnlyCredential.getCaller()) {
                 throw new AuthenticationException();
+            } else switch (callerOnlyCredential.getCaller()) {
+                case "user1":
+                    return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList(Roles.ROLE1)));
+                case "user2":
+                    return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList(Roles.ROLE2)));
+                case "user3":
+                    return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList(Roles.ROLE3)));
+                default:
+                    throw new AuthenticationException();
             }
 
         }

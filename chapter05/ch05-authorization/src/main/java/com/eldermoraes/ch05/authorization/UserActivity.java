@@ -3,36 +3,38 @@ package com.eldermoraes.ch05.authorization;
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
+import javax.ejb.Stateful;
 
 /**
  *
  * @author eldermoraes
  */
+@Stateful
 public class UserActivity {
     
-    @RolesAllowed({"role1"})
-    public static String role1Allowed(){
-        return "role1Allowed executed";
+    @RolesAllowed({Roles.ROLE1})
+    public void role1Allowed(){
+        System.out.println("role1Allowed executed");
     }
     
-    @RolesAllowed({"role2"})
-    public static String role2Allowed(){
-        return "role2Allowed executed";
+    @RolesAllowed({Roles.ROLE2})
+    public void role2Allowed(){
+        System.out.println("role2Allowed executed");
     }
 
-    @RolesAllowed({"role3"})
-    public static String role3Allowed(){
-        return "role3Allowed executed";
+    @RolesAllowed({Roles.ROLE3})
+    public void role3Allowed(){
+        System.out.println("role3Allowed executed");
     }
 
     @PermitAll
-    public static String anonymousAllowed(){
-        return "anonymousAllowed executed";
+    public void anonymousAllowed(){
+        System.out.println("anonymousAllowed executed");
     }
 
     @DenyAll
-    public static String noOneAllowed(){
-        return "noOneAllowed executed";
+    public void noOneAllowed(){
+        System.out.println("noOneAllowed executed");
     }    
     
 }
