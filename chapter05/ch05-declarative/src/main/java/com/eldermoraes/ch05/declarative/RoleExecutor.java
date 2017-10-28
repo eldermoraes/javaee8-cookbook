@@ -9,7 +9,7 @@ import javax.inject.Named;
  */
 @Named
 @RunAs(Roles.USER)
-public class UserExecutor implements RoleExecutable {
+public class RoleExecutor implements RoleExecutable {
 
     @Override
     public void run(Executable executable) throws Exception {

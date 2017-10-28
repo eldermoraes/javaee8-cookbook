@@ -10,7 +10,7 @@ import javax.ejb.Stateful;
  * @author eldermoraes
  */
 @Stateful
-public class UserActivity {
+public class UserBean {
     
     @RolesAllowed({Roles.ADMIN})
     public void adminOperation(){

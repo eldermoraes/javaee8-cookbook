@@ -25,7 +25,7 @@ public class AdminServlet extends HttpServlet {
     private AdminExecutor adminExecutor;
 
     @Inject
-    private UserActivity userActivity;
+    private UserBean userActivity;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
