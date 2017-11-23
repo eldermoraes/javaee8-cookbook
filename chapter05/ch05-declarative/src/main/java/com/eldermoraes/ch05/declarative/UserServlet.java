@@ -22,7 +22,7 @@ public class UserServlet extends HttpServlet {
     private SecurityContext securityContext;
 
     @Inject
-    private RoleExecutor userExecutor;
+    private UserExecutor userExecutor;
 
     @Inject
     private UserBean userActivity;
