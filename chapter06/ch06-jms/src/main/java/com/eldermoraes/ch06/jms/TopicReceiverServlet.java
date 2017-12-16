@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
  *
  * @author eldermoraes
  */
-@WebServlet(name = "QueueReceiverServlet", urlPatterns = {"/QueueReceiverServlet"}, loadOnStartup = 1)
-public class QueueReceiverServlet extends HttpServlet {
+@WebServlet(name = "TopicReceiverServlet", urlPatterns = {"/TopicReceiverServlet"}, loadOnStartup = 1)
+public class TopicReceiverServlet extends HttpServlet {
     
     @Inject
-    private QueueReceiver receiver;
+    private TopicReceiver receiver;
 
     @Override
     public void init() throws ServletException {
         receiver.receive();
-        System.out.println("**********Queue receiver defined. Check the log for details.**********");
+        System.out.println("**********Topic receiver defined. Check the log for details.**********");
     }    
 
 }

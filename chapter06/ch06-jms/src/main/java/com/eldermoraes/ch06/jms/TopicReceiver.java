@@ -5,20 +5,20 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
-import javax.jms.Queue;
 import javax.jms.Session;
+import javax.jms.Topic;
 
 /**
  *
  * @author eldermoraes
  */
-public class QueueReceiver {
+public class TopicReceiver {
 
     @Resource(mappedName = "jms/JmsFactory")
     private ConnectionFactory jmsFactory;
     
-    @Resource(mappedName = "jms/JmsQueue")
-    private Queue jmsQueue;
+    @Resource(mappedName = "jms/JmsTopic")
+    private Topic jmsTopic;
 
     public void receive() {
         Connection conn;
@@ -28,8 +28,8 @@ public class QueueReceiver {
             conn = jmsFactory.createConnection();
             try (Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE)) {
                 
-                consumer = session.createConsumer(jmsQueue);
-                consumer.setMessageListener(new QueueListener());
+                consumer = session.createConsumer(jmsTopic);
+                consumer.setMessageListener(new TopicListener());
                 conn.start();
                 
                 consumer.close();
