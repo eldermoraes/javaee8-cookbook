@@ -16,21 +16,20 @@ import javax.naming.NamingException;
  */
 public class SysConfigBean {
 
-    public String getSysConfig() throws SQLException, NamingException{
-        Connection conn = ConnectionPool.getConnection();
-        
-        String sql = "SELECT variable, value FROM sys_config";
-        
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-        
-        List<SysConfig> list = new ArrayList<>();
-        while(rs.next()){
-            list.add(new SysConfig(rs.getString("variable"), rs.getString("value")));
-        }
-        
-        Jsonb jsonbBuilder = JsonbBuilder.create();
-        return jsonbBuilder.toJson(list);
-        
+    public String getSysConfig() throws SQLException, NamingException {
+        try (Connection conn = ConnectionPool.getConnection()) {
+            String sql = "SELECT variable, value FROM sys_config";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            List<SysConfig> list = new ArrayList<>();
+            while (rs.next()) {
+                list.add(new SysConfig(rs.getString("variable"), rs.getString("value")));
+            }
+
+            Jsonb jsonbBuilder = JsonbBuilder.create();
+            return jsonbBuilder.toJson(list);
+        } 
     }
 }
