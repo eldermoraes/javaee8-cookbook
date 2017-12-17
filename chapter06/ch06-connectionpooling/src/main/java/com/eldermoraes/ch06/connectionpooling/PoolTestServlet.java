@@ -3,6 +3,8 @@ package com.eldermoraes.ch06.connectionpooling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,18 +19,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PoolTestServlet", urlPatterns = {"/PoolTestServlet"})
 public class PoolTestServlet extends HttpServlet {
 
+    @EJB
+    private SysConfigBean config;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try (PrintWriter writer = response.getWriter()) {
-            SysConfigBean config = new SysConfigBean();
+            config = new SysConfigBean();
             writer.write(config.getSysConfig());
         } catch (SQLException | NamingException ex) {
             System.err.println(ex.getMessage());
         }
     }
-
-
 }
