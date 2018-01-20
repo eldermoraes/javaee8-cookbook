@@ -1,9 +1,7 @@
-package com.eldermoraes.ch08.micro_x_mono.mono.service;
+package com.eldermoraes.ch08.micro_x_mono.micro.address.service;
 
-import com.eldermoraes.ch08.micro_x_mono.mono.bean.UserAddressBeanMock;
-import com.eldermoraes.ch08.micro_x_mono.mono.bean.UserBean;
-import com.eldermoraes.ch08.micro_x_mono.mono.entity.User;
-import com.eldermoraes.ch08.micro_x_mono.mono.entity.UserAddress;
+import com.eldermoraes.ch08.micro_x_mono.micro.address.bean.UserAddressBeanMock;
+import com.eldermoraes.ch08.micro_x_mono.micro.address.entity.UserAddress;
 import javax.ejb.EJB;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
@@ -26,9 +24,6 @@ public class UserAddressService {
     
     @EJB
     private UserAddressBeanMock userAddressBean;
-    
-    @EJB
-    private UserBean userBean;
     
     private final Jsonb jsonbBuilder = JsonbBuilder.create();
     

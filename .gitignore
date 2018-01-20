@@ -26,3 +26,15 @@
 /chapter05/ch05-authorization/target/
 /chapter05/ch05-declarative/target/
 /chapter05/ch05-programmatic/target/
+/chapter05/ch06-connectionpooling/target/
+/chapter06/ch06-jms/nbproject/
+/chapter06/ch06-jms/target/
+/chapter06/ch06-transaction/nbproject/
+/chapter06/ch06-transaction/target/
+/chapter06/ch06-lifecycle/target/
+/chapter06/ch06-connectionpooling/target/
+/chapter08/ch08-micro_x_mono-mono/nbproject/
+/chapter08/ch08-micro_x_mono-mono/target/
+/chapter08/ch08-micro_x_mono-micro-user/target/
+/chapter08/ch08-micro_x_mono-micro-address/target/
+/chapter08/ch08-micro_x_mono-micro-gateway/target/

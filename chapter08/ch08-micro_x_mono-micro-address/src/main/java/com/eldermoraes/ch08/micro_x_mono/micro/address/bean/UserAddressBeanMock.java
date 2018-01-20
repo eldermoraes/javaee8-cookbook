@@ -1,6 +1,6 @@
-package com.eldermoraes.ch08.micro_x_mono.mono.bean;
+package com.eldermoraes.ch08.micro_x_mono.micro.address.bean;
 
-import com.eldermoraes.ch08.micro_x_mono.mono.entity.UserAddress;
+import com.eldermoraes.ch08.micro_x_mono.micro.address.entity.UserAddress;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;

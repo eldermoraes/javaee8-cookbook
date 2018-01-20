@@ -48,9 +48,7 @@ public class UserService {
     @Path("add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)    
-    public Response add(@PathParam("name") String name,
-                        @PathParam("email") String email){
-        User user = new User(name, email);
+    public Response add(User user){
         userBean.add(user);
         return Response.accepted().build();
     }    
