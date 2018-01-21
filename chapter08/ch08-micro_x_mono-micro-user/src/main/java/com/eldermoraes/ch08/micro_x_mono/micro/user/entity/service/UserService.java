@@ -3,8 +3,6 @@ package com.eldermoraes.ch08.micro_x_mono.micro.user.entity.service;
 import com.eldermoraes.ch08.micro_x_mono.micro.user.entity.User;
 import com.eldermoraes.ch08.micro_x_mono.micro.user.entity.bean.UserBeanMock;
 import javax.ejb.EJB;
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,14 +23,12 @@ public class UserService {
     @EJB
     private UserBeanMock userBean;
     
-    private final Jsonb jsonbBuilder = JsonbBuilder.create();
-    
     @GET
     @Path("findById/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") Long id){
-        return Response.ok(jsonbBuilder.toJson(userBean.findById(id))).build();
+        return Response.ok(userBean.findById(id)).build();
     }
     
     @GET
@@ -40,7 +36,7 @@ public class UserService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(){
-        return Response.ok(jsonbBuilder.toJson(userBean.get())).build();
+        return Response.ok(userBean.get()).build();
     }    
     
     @PUT
