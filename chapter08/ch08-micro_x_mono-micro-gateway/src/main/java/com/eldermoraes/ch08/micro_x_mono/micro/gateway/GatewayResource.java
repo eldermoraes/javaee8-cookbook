@@ -1,7 +1,11 @@
 package com.eldermoraes.ch08.micro_x_mono.micro.gateway;
 
 import com.eldermoraes.ch08.micro_x_mono.micro.gateway.pojo.UserAddress;
-import com.kumuluz.ee.discovery.annotations.DiscoverService;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -10,6 +14,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.Produces;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -24,19 +30,23 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class GatewayResource {
 
-    @Inject
-    @DiscoverService(value = "user-service", version = "1.0.x", environment = "dev")
+    private final String hostURI = "http://localhost:8080/";
+    private Client client;
     private WebTarget targetUser;
-
-    @Inject
-    @DiscoverService(value = "address-service", version = "1.0.x", environment = "dev")
     private WebTarget targetAddress;
+
+    @PostConstruct
+    public void init() {
+        client = ClientBuilder.newClient();
+        targetUser = client.target(hostURI + "ch08-micro_x_mono-micro-user/");
+        targetAddress = client.target(hostURI + "ch08-micro_x_mono-micro-address/");
+    }
 
     @GET
     @Path("getUsers")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUsers() {
-        WebTarget service = targetUser.path("webresources/get");
+        WebTarget service = targetUser.path("webresources/userService/get");
 
         Response response;
         try {
@@ -51,10 +61,12 @@ public class GatewayResource {
 
         return Response.ok(proxiedResponse).build();
     }
-    
+
     @POST
-    public Response addNewCustomer(UserAddress address) {
-        WebTarget service = targetAddress.path("webresources/add");
+    @Path("addAddress")
+    @Produces(MediaType.APPLICATION_JSON)    
+    public Response addAddress(UserAddress address) {
+        WebTarget service = targetAddress.path("webresources/userAddressService/add");
 
         Response response;
         try {
@@ -64,6 +76,6 @@ public class GatewayResource {
         }
 
         return Response.fromResponse(response).build();
-    }    
+    }
 
 }

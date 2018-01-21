@@ -21,11 +21,6 @@
             <version>8.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.kumuluz.ee.discovery</groupId>
-            <artifactId>kumuluzee-discovery-consul</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 
     <build>
