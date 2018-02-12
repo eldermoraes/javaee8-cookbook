@@ -4,10 +4,10 @@ package com.eldermoraes.ch08.micro_x_mono.micro.gateway;
  *
  * @author eldermoraes
  */
-public class ProxiedResponse {
+public class GatewayResponse {
 
     private String response;
-    private String proxiedFrom;
+    private String from;
 
     public String getResponse() {
         return response;
@@ -17,11 +17,11 @@ public class ProxiedResponse {
         this.response = response;
     }
 
-    public String getProxiedFrom() {
-        return proxiedFrom;
+    public String getFrom() {
+        return from;
     }
 
-    public void setProxiedFrom(String proxiedFrom) {
-        this.proxiedFrom = proxiedFrom;
+    public void setFrom(String from) {
+        this.from = from;
     }
 }

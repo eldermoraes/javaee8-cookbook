@@ -2,11 +2,8 @@ package com.eldermoraes.ch08.micro_x_mono.mono.service;
 
 import com.eldermoraes.ch08.micro_x_mono.mono.bean.UserAddressBeanMock;
 import com.eldermoraes.ch08.micro_x_mono.mono.bean.UserBean;
-import com.eldermoraes.ch08.micro_x_mono.mono.entity.User;
 import com.eldermoraes.ch08.micro_x_mono.mono.entity.UserAddress;
 import javax.ejb.EJB;
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,17 +24,12 @@ public class UserAddressService {
     @EJB
     private UserAddressBeanMock userAddressBean;
     
-    @EJB
-    private UserBean userBean;
-    
-    private final Jsonb jsonbBuilder = JsonbBuilder.create();
-    
     @GET
     @Path("findById/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response findById(@PathParam("id") Long id){
-        return Response.ok(jsonbBuilder.toJson(userAddressBean.findById(id))).build();
+        return Response.ok(userAddressBean.findById(id)).build();
     }
     
     @GET
@@ -45,7 +37,7 @@ public class UserAddressService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(){
-        return Response.ok(jsonbBuilder.toJson(userAddressBean.get())).build();
+        return Response.ok(userAddressBean.get()).build();
     }    
     
     @POST

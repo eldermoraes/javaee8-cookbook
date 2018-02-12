@@ -1,13 +1,8 @@
 package com.eldermoraes.ch08.micro_x_mono.micro.gateway;
 
 import com.eldermoraes.ch08.micro_x_mono.micro.gateway.pojo.UserAddress;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -55,11 +50,11 @@ public class GatewayResource {
             return Response.status(408).build();
         }
 
-        ProxiedResponse proxiedResponse = new ProxiedResponse();
-        proxiedResponse.setResponse(response.readEntity(String.class));
-        proxiedResponse.setProxiedFrom(targetUser.getUri().toString());
+        GatewayResponse gatewayResponse = new GatewayResponse();
+        gatewayResponse.setResponse(response.readEntity(String.class));
+        gatewayResponse.setFrom(targetUser.getUri().toString());
 
-        return Response.ok(proxiedResponse).build();
+        return Response.ok(gatewayResponse).build();
     }
 
     @POST
