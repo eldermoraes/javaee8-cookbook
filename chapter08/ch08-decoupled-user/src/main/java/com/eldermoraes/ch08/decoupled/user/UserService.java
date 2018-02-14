@@ -16,9 +16,9 @@ import javax.ws.rs.core.Response;
 public class UserService {
     
     @GET
-    @Path("getUserTightCoupled/{name}/{email}")
+    @Path("getUserCoupled/{name}/{email}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserTightCoupled(
+    public Response getUserCoupled(
             @PathParam("name") String name, 
             @PathParam("email") String email){
         //GET USER CODE
@@ -27,9 +27,9 @@ public class UserService {
     }
     
     @GET
-    @Path("getUserLooseCoupled")
+    @Path("getUserDecoupled")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserLooseCoupled(@HeaderParam("User") User user){
+    public Response getUserDecoupled(@HeaderParam("User") User user){
         //GET USER CODE
         
         return Response.ok().build();

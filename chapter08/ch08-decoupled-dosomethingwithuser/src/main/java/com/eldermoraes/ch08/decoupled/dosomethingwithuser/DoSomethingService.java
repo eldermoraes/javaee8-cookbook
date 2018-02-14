@@ -28,10 +28,10 @@ public class DoSomethingService {
         target = client.target(hostURI + "ch08-decoupled-user/");
     }    
     
-    @Path("doSomethingTightCoupled")
+    @Path("doSomethingCoupled")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response doSomethingTightCoupled(String name, String email){
-        WebTarget service = target.path("webresources/userService/getUserTightCoupled");
+    public Response doSomethingCoupled(String name, String email){
+        WebTarget service = target.path("webresources/userService/getUserCoupled");
         service.queryParam("name", name);
         service.queryParam("email", email);
 
@@ -45,10 +45,10 @@ public class DoSomethingService {
         return Response.ok(response.readEntity(String.class)).build();
     }
     
-    @Path("doSomethingLooseCoupled")
+    @Path("doSomethingDecoupled")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response doSomethingLooseCoupled(User user){
-        WebTarget service = target.path("webresources/userService/getUserLooseCoupled");
+    public Response doSomethingDecoupled(User user){
+        WebTarget service = target.path("webresources/userService/getUserDecoupled");
 
         Response response;
         try {
