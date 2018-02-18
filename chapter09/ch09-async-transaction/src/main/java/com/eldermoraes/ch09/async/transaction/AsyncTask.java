@@ -4,6 +4,11 @@ import java.util.concurrent.Callable;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 /**
@@ -23,7 +28,7 @@ public class AsyncTask implements Callable<User> {
             User user = userBean.getUser();
             userTransaction.commit();
             return user;
-        } catch (Exception e) {
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {
             userTransaction.rollback();
             return null;
         }
