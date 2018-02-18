@@ -28,28 +28,28 @@ public class AsyncService {
     @GET
     public void asyncService(@Suspended AsyncResponse response) {
         int i = 0;
-        
+
         List<User> usersFound = new ArrayList<>();
-        while (i < 4) {            
+        while (i < 4) {
             Future<User> result = executor.submit(new AsyncTask());
-            
-            while(!result.isDone()){
+
+            while (!result.isDone()) {
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
                     System.err.println(ex.getMessage());
                 }
-                
-                try {
-                    usersFound.add(result.get());
-                } catch (InterruptedException | ExecutionException ex) {
-                    System.err.println(ex.getMessage());
-                }
             }
-            
+
+            try {
+                usersFound.add(result.get());
+            } catch (InterruptedException | ExecutionException ex) {
+                System.err.println(ex.getMessage());
+            }
+
             i++;
         }
-        
+
         response.resume(Response.ok(usersFound).build());
     }
 
