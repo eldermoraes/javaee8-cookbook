@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
-import javax.ws.rs.core.Response;
 
 /**
  *
@@ -15,13 +14,14 @@ import javax.ws.rs.core.Response;
 public class UserBean {
     
     @GET
-    public Response getUser(){
+    public User getUser(){
         try {
             TimeUnit.SECONDS.sleep(5);
             long id = new Date().getTime();
-            return Response.ok(new User(id, "User " + id)).build();
+            return new User(id, "User " + id);
         } catch (InterruptedException ex) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(ex).build();
+            long id = new Date().getTime();
+            return new User(id, "Error " + id);
         }
     }
 }

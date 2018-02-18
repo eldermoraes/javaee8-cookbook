@@ -27,28 +27,13 @@ public class AsyncService {
 
     @GET
     public void asyncService(@Suspended AsyncResponse response) {
-        Thread thread = factory.newThread(new AsyncTask(response));
+        Thread thread = factory.newThread(() -> {
+            response.resume(Response.ok(userBean.getUser()).build());
+        });
         
         thread.setName("Managed Async Task");
         thread.setPriority(Thread.MIN_PRIORITY);
         thread.start();
     }
 
-    public class AsyncTask implements Runnable{
-        private final AsyncResponse response;
-        
-        public AsyncTask(AsyncResponse response){
-            this.response = response;
-        }
-        
-        @Override
-        public void run() {
-            response.resume(readResponse(userBean.getUser()));
-        }
-    }
-    
-    private String readResponse(Response response) {
-        return response.readEntity(String.class);
-    }
-    
 }
