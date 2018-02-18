@@ -1,7 +1,6 @@
 package com.eldermoraes.ch09.async.result.client;
 
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;

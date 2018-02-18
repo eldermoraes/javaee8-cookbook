@@ -1,9 +1,8 @@
-package com.eldermoraes.ch09.async.result;
+package com.eldermoraes.ch09.async.result.remote;
 
+import com.eldermoraes.ch09.async.result.User;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
