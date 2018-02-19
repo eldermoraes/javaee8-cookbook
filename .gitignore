@@ -38,3 +38,13 @@
 /chapter08/ch08-micro_x_mono-micro-user/target/
 /chapter08/ch08-micro_x_mono-micro-address/target/
 /chapter08/ch08-micro_x_mono-micro-gateway/target/
+/chapter08/ch08-decoupled-dosomethingwithuser/target/
+/chapter08/ch08-automation/nbproject/
+/chapter08/ch08-automation/target/
+/chapter09/ch09-async-result/target/
+/chapter09/ch09-task-status/target/
+/chapter09/ch09-async-transaction/target/
+/chapter09/ch09-scheduled-task/target/
+/chapter09/ch09-managed-thread/target/
+/chapter09/ch09-cdi-task/target/
+/chapter09/ch09-proxy-task/target/
