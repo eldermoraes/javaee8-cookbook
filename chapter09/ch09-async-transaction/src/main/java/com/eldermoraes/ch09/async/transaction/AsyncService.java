@@ -24,7 +24,7 @@ public class AsyncService {
     private AsyncTask asyncTask;
     
     @Resource(name = "LocalManagedExecutorService")
-    ManagedExecutorService executor;   
+    private ManagedExecutorService executor;   
     
     @PostConstruct
     public void init(){

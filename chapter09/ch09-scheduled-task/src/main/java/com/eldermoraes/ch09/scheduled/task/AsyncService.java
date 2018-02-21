@@ -21,13 +21,13 @@ import javax.ws.rs.core.Response;
 public class AsyncService {
 
     @Resource(name = "LocalManagedScheduledExecutorService")
-    ManagedScheduledExecutorService executor;
+    private ManagedScheduledExecutorService executor;
 
     @GET
     public void asyncService(@Suspended AsyncResponse response) {
 
         ScheduledFuture<User> result = executor.schedule(new AsyncTask(), 5, TimeUnit.SECONDS);
-
+        
         while (!result.isDone()) {
             try {
                 TimeUnit.SECONDS.sleep(1);

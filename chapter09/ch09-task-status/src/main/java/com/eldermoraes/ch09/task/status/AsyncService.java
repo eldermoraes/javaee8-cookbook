@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
 public class AsyncService {
 
     @Resource(name = "LocalManagedExecutorService")
-    ManagedExecutorService executor;
+    private ManagedExecutorService executor;
 
     @GET
     public void asyncService(@Suspended AsyncResponse response) {

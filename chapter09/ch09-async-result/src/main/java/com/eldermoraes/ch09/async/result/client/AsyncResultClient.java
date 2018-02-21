@@ -22,15 +22,15 @@ public class AsyncResultClient {
 
     @PostConstruct
     public void init() {
-        this.client = ClientBuilder.newBuilder()
+        client = ClientBuilder.newBuilder()
                 .readTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .build();
-        this.target = this.client.target("http://localhost:8080/ch09-async-result/userService");
+        target = client.target("http://localhost:8080/ch09-async-result/userService");
     }
     
     public CompletionStage<Response> getResult(){
-        return this.target.request(MediaType.APPLICATION_JSON).rx().get();
+        return target.request(MediaType.APPLICATION_JSON).rx().get();
     }
     
 }
