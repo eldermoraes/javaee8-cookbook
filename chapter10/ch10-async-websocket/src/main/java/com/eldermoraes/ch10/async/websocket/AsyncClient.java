@@ -3,6 +3,7 @@ package com.eldermoraes.ch10.async.websocket;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import javax.ejb.Stateless;
 import javax.websocket.ClientEndpoint;
 import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
@@ -17,6 +18,7 @@ import javax.ws.rs.container.AsyncResponse;
  * @author eldermoraes
  */
 @ClientEndpoint
+@Stateless
 public class AsyncClient {
 
     private final String asyncServer = "ws://localhost:8080/ch10-async-websocket/asyncServer";

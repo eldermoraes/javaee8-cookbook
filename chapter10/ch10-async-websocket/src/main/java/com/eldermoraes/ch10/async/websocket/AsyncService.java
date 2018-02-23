@@ -16,7 +16,6 @@ import javax.ws.rs.container.Suspended;
 @Path("asyncService")
 public class AsyncService {
     
-    
     @GET
     public void asyncService(@Suspended AsyncResponse response){
         AsyncClient client = new AsyncClient(response);
