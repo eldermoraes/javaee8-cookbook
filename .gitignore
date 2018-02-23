@@ -48,3 +48,9 @@
 /chapter09/ch09-managed-thread/target/
 /chapter09/ch09-cdi-task/target/
 /chapter09/ch09-proxy-task/target/
+/chapter10/ch10-async-bean/target/
+/chapter10/ch10-event-observer/target/
+/chapter10/ch10-async-servlet/target/
+/chapter10/ch10-async-websocket/target/
+/chapter10/ch10-completable-future/target/
+/chapter10/ch10-async-jaxrs/target/
