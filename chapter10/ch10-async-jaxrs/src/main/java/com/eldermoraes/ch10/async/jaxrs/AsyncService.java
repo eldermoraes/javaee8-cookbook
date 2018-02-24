@@ -2,7 +2,6 @@ package com.eldermoraes.ch10.async.jaxrs;
 
 import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
-import javax.ejb.AsyncResult;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

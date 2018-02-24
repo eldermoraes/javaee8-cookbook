@@ -1,7 +1,5 @@
 package com.eldermoraes.ch10.mdb;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
