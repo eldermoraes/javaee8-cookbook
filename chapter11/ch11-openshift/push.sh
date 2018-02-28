@@ -1,2 +1,1 @@
-  docker login
-  docker push eldermoraes/gf-javaee-cookbook-os
+docker push eldermoraes/gf-javaee-cookbook-os
