@@ -1,25 +1,12 @@
-FROM eldermoraes/gf-javaee-ubuntu
+FROM eldermoraes/gf-javaee-jdk8
 
-ENV GLASSFISH_ARCHIVE glassfish5
-ENV DOMAIN_NAME domain1
-ENV INSTALL_DIR /
-ENV GLASSFISH_ROOT ${INSTALL_DIR}/${GLASSFISH_ARCHIVE}
-ENV GLASSFISH_HOME ${INSTALL_DIR}/${GLASSFISH_ARCHIVE}/glassfish
- 
-ENV DEPLOYMENT_DIR ${GLASSFISH_HOME}/domains/${DOMAIN_NAME}/autodeploy
-
-ENV user=glassfish \
-    group=glassfish \
-    uid=1001 \
-    gid=501
-
-RUN addgroup --system ${group} --gid ${gid} && \
-    adduser -u ${uid} --gid ${gid} --disabled-login --system ${user} && \    
-    chown -R ${user}:${user} ${GLASSFISH_ROOT} && \
-    chmod -R 777 ${GLASSFISH_ROOT}
+ENV DEPLOYMENT_DIR ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/
 
 COPY app.war ${DEPLOYMENT_DIR}
-RUN chown -R ${user}:${user} ${DEPLOYMENT_DIR}/app.war 
 
-USER ${user}
+USER root
 
+RUN chown -R glassfish:glassfish_grp ${DEPLOYMENT_DIR}/app.war \
+    && chmod -R 777 ${DEPLOYMENT_DIR}/app.war
+
+USER glassfish
