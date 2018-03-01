@@ -1,1 +1,1 @@
-docker push eldermoraes/gf-javaee-ubuntu
+docker push eldermoraes/gf-javaee-jdk8

@@ -1,1 +1,1 @@
-docker build -t eldermoraes/gf-javaee-ubuntu .
+docker build -t eldermoraes/gf-javaee-jdk8 .
