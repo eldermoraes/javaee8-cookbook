@@ -1,9 +1,5 @@
-FROM oracle/glassfish:nightly
+FROM eldermoraes/gf-javaee-jdk8
 
-ENV GLASSFISH_ARCHIVE glassfish5
-ENV DOMAIN_NAME domain1
-ENV INSTALL_DIR /
-ENV GLASSFISH_HOME ${INSTALL_DIR}/${GLASSFISH_ARCHIVE}/glassfish
-ENV DEPLOYMENT_DIR ${GLASSFISH_HOME}/domains/${DOMAIN_NAME}/autodeploy
+ENV DEPLOYMENT_DIR ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/
 
 COPY app.war ${DEPLOYMENT_DIR}
