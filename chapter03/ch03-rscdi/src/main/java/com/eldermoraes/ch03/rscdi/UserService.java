@@ -18,7 +18,6 @@ public class UserService implements Serializable{
     @Inject
     private UserBean userBean;
     
-    private User userFromBean;
     private User userLocal;
     
     @Inject
@@ -31,8 +30,7 @@ public class UserService implements Serializable{
     @Path("getUserFromBean")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserFromBean(){
-        userFromBean = userBean.getUser();
-        return Response.ok(userFromBean).build();
+        return Response.ok(userBean.getUser()).build();
     }
 
     @GET

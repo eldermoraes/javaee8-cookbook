@@ -2,6 +2,8 @@ package com.eldermoraes.ch03.jsonb;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.json.bind.Jsonb;
@@ -27,6 +29,11 @@ public class UserView implements Serializable{
         
         Jsonb jb = JsonbBuilder.create();
         json = jb.toJson(user);
+        try {
+            jb.close();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public String getJson() {

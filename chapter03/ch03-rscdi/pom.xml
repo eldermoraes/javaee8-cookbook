@@ -14,18 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
-    <repositories>
-        <repository> 
-            <id>Java EE 8</id> 
-            <url>https://maven.java.net/content/groups/promoted/</url> 
-        </repository> 
-    </repositories>    
-    
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>8.0-b22</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -14,33 +14,23 @@
     </properties>
     
     <dependencies>
-    
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.apache.openejb</groupId>
+            <groupId>org.apache.tomee</groupId>
             <artifactId>openejb-core</artifactId>
-            <version>4.7.4</version>
-            <scope>test</scope>
+            <version>7.0.4</version>
         </dependency>
-        
         <dependency>
-            <groupId>org.apache.openejb</groupId>
+            <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>6.0-6</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>eclipselink</artifactId>
-            <version>2.6.4</version>
-        </dependency>
-    </dependencies>    
-
+    </dependencies>
 
 </project>

@@ -2,8 +2,8 @@ package com.eldermoraes.ch01.mvc;
 
 import javax.inject.Inject;
 import javax.ws.rs.Path;
-import javax.mvc.Controller;
 import javax.mvc.Models;
+import javax.mvc.annotation.Controller;
 import javax.ws.rs.GET;
 
 /**

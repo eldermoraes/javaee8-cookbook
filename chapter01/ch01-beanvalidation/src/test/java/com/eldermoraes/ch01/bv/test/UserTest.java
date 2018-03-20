@@ -1,7 +1,7 @@
 package com.eldermoraes.ch01.bv.test;
 
 import com.eldermoraes.ch01.bv.User;
-import java.util.Arrays;
+import static java.util.Arrays.asList;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -17,11 +17,11 @@ import org.junit.Test;
  */
 public class UserTest {
     
-    private static Validator VALIDATOR;
+    private static Validator validator;
     
     @BeforeClass
     public static void setUpClass() {
-        VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
+        validator = Validation.buildDefaultValidatorFactory().getValidator();
     }
     
     @Test
@@ -29,9 +29,9 @@ public class UserTest {
         User user = new User(
                 "elder", 
                 "elder@eldermoraes.com", 
-                Arrays.asList(new Integer[]{1,2}));
+                asList(1,2));
         
-        Set<ConstraintViolation<User>> cv = VALIDATOR.validate(user);
+        Set<ConstraintViolation<User>> cv = validator.validate(user);
         assertTrue(cv.isEmpty());
     }
     
@@ -40,9 +40,9 @@ public class UserTest {
         User user = new User(
                 "", 
                 "elder@eldermoraes.com", 
-                Arrays.asList(new Integer[]{1,2}));
+                asList(1,2));
         
-        Set<ConstraintViolation<User>> cv = VALIDATOR.validate(user);
+        Set<ConstraintViolation<User>> cv = validator.validate(user);
         assertEquals(1, cv.size());
     }
 
@@ -51,9 +51,9 @@ public class UserTest {
         User user = new User(
                 "elder", 
                 "elder-eldermoraes_com", 
-                Arrays.asList(new Integer[]{1,2}));
+                asList(1,2));
         
-        Set<ConstraintViolation<User>> cv = VALIDATOR.validate(user);
+        Set<ConstraintViolation<User>> cv = validator.validate(user);
         assertEquals(1, cv.size());
     }    
     
@@ -62,9 +62,9 @@ public class UserTest {
         User user = new User(
                 "elder", 
                 "elder@eldermoraes.com", 
-                Arrays.asList(new Integer[]{-1,-2,1,2}));
+                asList(-1,-2,1,2));
         
-        Set<ConstraintViolation<User>> cv = VALIDATOR.validate(user);
+        Set<ConstraintViolation<User>> cv = validator.validate(user);
         assertEquals(2, cv.size());
     }    
     

@@ -1,19 +1,25 @@
 package com.eldermoraes.ch01.jsf;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class UserBean implements Serializable {
     
     private User user;
     
-    public UserBean(){
+    @PostConstruct
+    public void init(){
         user = new User("Elder Moraes", "elder@eldermoraes.com");
+    }
+    
+    public UserBean(){
+        
     }
 
     public void userAction(){

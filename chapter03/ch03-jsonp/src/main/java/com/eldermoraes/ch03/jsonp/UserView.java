@@ -11,7 +11,6 @@ import javax.json.JsonStructure;
 import javax.json.JsonValue;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
-import org.glassfish.json.JsonPointerImpl;
 
 /**
  *
@@ -22,7 +21,7 @@ import org.glassfish.json.JsonPointerImpl;
 public class UserView implements Serializable {
 
     private static final JsonBuilderFactory BUILDERFACTORY = Json.createBuilderFactory(null);
-    private final Jsonb jsonBBuilder = JsonbBuilder.create();
+    private final Jsonb jsonbBuilder = JsonbBuilder.create();
 
     private String fromArray;
     private String fromStructure;
@@ -47,7 +46,7 @@ public class UserView implements Serializable {
                         .add("name", "User3")
                         .add("email", "user3@eldermoraes.com"))
                 .build();
-        fromArray = jsonBBuilder.toJson(array);
+        fromArray = jsonbBuilder.toJson(array);
     }
 
     private void loadFromStructure() {
@@ -62,16 +61,16 @@ public class UserView implements Serializable {
                                 .add("id", "2")
                                 .add("name", "Profile2")))
                 .build();
-        fromStructure = jsonBBuilder.toJson(structure);
+        fromStructure = jsonbBuilder.toJson(structure);
 
-        JsonPointer pointer = new JsonPointerImpl("/profiles");
+        JsonPointer pointer = Json.createPointer("/profiles");
         JsonValue value = pointer.getValue(structure);
         fromJpointer = value.toString();
     }
 
     private void loadFromUser() {
         User user = new User("Elder Moraes", "elder@eldermoraes.com", new Integer[]{1, 2, 3});
-        fromUser = jsonBBuilder.toJson(user);
+        fromUser = jsonbBuilder.toJson(user);
     }
 
     public String getFromArray() {

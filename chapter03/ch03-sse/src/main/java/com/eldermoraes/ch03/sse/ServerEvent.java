@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -40,9 +41,11 @@ public class ServerEvent {
         final MyEvent process = new MyEvent(testSources, sse);
 
         EVENTS.put(process.getId(), process);
-        Executors.newSingleThreadExecutor().execute(process);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(process);
 
         final URI uri = UriBuilder.fromResource(ServerEvent.class).path("process/{id}").build(process.getId());
+        executor.shutdown();
         return Response.created(uri).build();
     }
 

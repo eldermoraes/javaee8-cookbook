@@ -7,7 +7,6 @@ import javax.json.JsonPointer;
 import javax.json.JsonReader;
 import javax.json.JsonStructure;
 import javax.json.JsonValue;
-import org.glassfish.json.JsonPointerImpl;
 
 /**
  *
@@ -20,7 +19,7 @@ public class JPointer {
                 JsonReader jr = Json.createReader(is)) {
 
             JsonStructure js = jr.read();
-            JsonPointer jp = new JsonPointerImpl("/user/profile");
+            JsonPointer jp = Json.createPointer("/user/profile");
             JsonValue jv = jp.getValue(js);
             System.out.println("profile: " + jv);
 

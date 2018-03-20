@@ -2,17 +2,14 @@ package com.eldermoraes.ch01.jaxrs;
 
 import java.io.IOException;
 import java.net.URI;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
 public class ServerMock {
 
-    private static final URI CONTEXT = URI.create("http://localhost:8080/");
+    public static final URI CONTEXT = URI.create("http://localhost:8080/");
     public static final String BASE_PATH = "ssevents";
-    public static final WebTarget WEB_TARGET = ClientBuilder.newClient().target(CONTEXT + BASE_PATH);
 
     public static void main(String[] args) {
         try {

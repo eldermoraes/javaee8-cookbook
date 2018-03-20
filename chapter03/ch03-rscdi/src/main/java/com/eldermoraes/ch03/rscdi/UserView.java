@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -19,7 +20,8 @@ import javax.ws.rs.core.MediaType;
 public class UserView implements Serializable {
 
     public void loadUsers() {
-        WebTarget target = ClientBuilder.newClient().target(URI.create("http://localhost:8080/ch03-rscdi/"));
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(URI.create("http://localhost:8080/ch03-rscdi/"));
         User response = target.path("webresources/userservice/getUserFromBean")
                 .request()
                 .accept(MediaType.APPLICATION_JSON)
@@ -37,6 +39,7 @@ public class UserView implements Serializable {
         FacesContext.getCurrentInstance()
                 .addMessage(null,
                         new FacesMessage("userFromLocal: " + response));
+        client.close();
     }
 
 }
