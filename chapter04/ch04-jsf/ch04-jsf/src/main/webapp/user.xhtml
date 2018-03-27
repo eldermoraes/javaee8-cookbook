@@ -5,9 +5,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:body>
-        <ui:composition template="/template/layout.xhtml">
+        <ui:composition template="WEB-INF/template/layout.xhtml">
             <ui:define name="content">
-                <h1><font color="red">User content. Timestamp: #{userBean.timestamp}</font></h1>
+                <h1><p style="color:red">User content. Timestamp: #{userBean.timestamp}</p></h1>
             </ui:define>
         </ui:composition>
     </h:body>

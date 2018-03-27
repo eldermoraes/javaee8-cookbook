@@ -2,10 +2,10 @@ package com.eldermoraes.ch04.jsf;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
  
-@ManagedBean(name="userBean")
+@Named
 @SessionScoped
 public class UserBean implements Serializable{
 

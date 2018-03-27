@@ -1,14 +1,15 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Servlet</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <a href="http://localhost:8080/ch04-servlet/InitConfigServlet">InitConfigServlet</a>
+        <a href="${pageContext.request.contextPath}/InitConfigServlet">InitConfigServlet</a>
         <br />
         <br />
-        <form action="AsyncServlet" method="GET">
+        <form action="${pageContext.request.contextPath}/AsyncServlet" method="GET">
             <h2>AsyncServlet</h2>
             Milliseconds
             <br />

@@ -25,8 +25,6 @@ public class AsyncServlet extends HttpServlet {
                 + Thread.currentThread().getName() + ", ID="
                 + Thread.currentThread().getId());
  
-        request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
- 
         String time = request.getParameter("timestamp");
         int secs = Integer.valueOf(time);
  
