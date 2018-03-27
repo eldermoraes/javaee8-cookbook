@@ -10,14 +10,13 @@ import javax.ejb.BeforeCompletion;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 
 /**
  *
  * @author eldermoraes
  */
 @Stateful
-@TransactionManagement(value=TransactionManagementType.CONTAINER)
+@TransactionManagement
 public class UserBean {
     
     private ArrayList<Integer> actions;

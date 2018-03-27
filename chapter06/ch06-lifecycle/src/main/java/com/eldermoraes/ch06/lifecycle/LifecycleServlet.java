@@ -49,8 +49,8 @@ public class LifecycleServlet extends HttpServlet {
     }    
     
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        System.out.println("init(ServletConfig config)");
+    public void init() throws ServletException {
+        System.out.println("init()");
     }
 
     @Override

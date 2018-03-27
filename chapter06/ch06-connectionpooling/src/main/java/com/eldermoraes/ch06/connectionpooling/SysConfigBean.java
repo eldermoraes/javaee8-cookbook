@@ -18,20 +18,21 @@ import javax.naming.NamingException;
 @Stateless
 public class SysConfigBean {
 
-    public String getSysConfig() throws SQLException, NamingException {
+    public String getSysConfig() throws SQLException, NamingException, Exception {
         String sql = "SELECT variable, value FROM sys_config";
 
         try (Connection conn = ConnectionPool.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+                ResultSet rs = ps.executeQuery();
+                Jsonb jsonb = JsonbBuilder.create()) {
 
             List<SysConfig> list = new ArrayList<>();
             while (rs.next()) {
                 list.add(new SysConfig(rs.getString("variable"), rs.getString("value")));
             }
 
-            Jsonb jsonbBuilder = JsonbBuilder.create();
-            return jsonbBuilder.toJson(list);
+            String json = jsonb.toJson(list);
+            return json;
         }
     }
 }
