@@ -27,7 +27,6 @@ public class AsyncServlet extends HttpServlet {
                 + Thread.currentThread().getId());
 
         String time = request.getParameter("timestamp");
-
         AsyncContext asyncCtx = request.startAsync();
 
         asyncCtx.start(() -> {
