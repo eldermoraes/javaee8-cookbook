@@ -1,14 +1,12 @@
 package com.eldermoraes.ch05.programmatic;
 
-import static java.util.Arrays.asList;
+import java.util.Arrays;
 import java.util.HashSet;
 import javax.enterprise.context.ApplicationScoped;
 import javax.security.enterprise.CallerPrincipal;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.security.enterprise.identitystore.CredentialValidationResult;
-import static javax.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
-import static javax.security.enterprise.identitystore.CredentialValidationResult.NOT_VALIDATED_RESULT;
 import javax.security.enterprise.identitystore.IdentityStore;
 
 /**
@@ -24,7 +22,7 @@ public class UserIdentityStore implements IdentityStore {
             return validate((UsernamePasswordCredential) credential);
         }
 
-        return NOT_VALIDATED_RESULT;
+        return CredentialValidationResult.NOT_VALIDATED_RESULT;
     }
 
     public CredentialValidationResult validate(UsernamePasswordCredential usernamePasswordCredential) {
@@ -34,16 +32,16 @@ public class UserIdentityStore implements IdentityStore {
 
             return new CredentialValidationResult(
                     new CallerPrincipal(usernamePasswordCredential.getCaller()),
-                    new HashSet<>(asList(Roles.ADMIN)));
+                    new HashSet<>(Arrays.asList(Roles.ADMIN)));
         } else if (usernamePasswordCredential.getCaller().equals(Roles.USER)
                 && usernamePasswordCredential.getPassword().compareTo("1234")) {
 
             return new CredentialValidationResult(
                     new CallerPrincipal(usernamePasswordCredential.getCaller()),
-                    new HashSet<>(asList(Roles.USER)));
+                    new HashSet<>(Arrays.asList(Roles.USER)));
         }
 
-        return INVALID_RESULT;
+        return CredentialValidationResult.INVALID_RESULT;
     }
 
 }

@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.security.enterprise.AuthenticationStatus;
 import javax.security.enterprise.SecurityContext;
 import javax.security.enterprise.credential.CallerOnlyCredential;
-import static javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters.withParams;
+import javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +28,7 @@ public class UserAuthenticationServlet extends HttpServlet {
         String name = request.getParameter("name");
         if (null != name || !"".equals(name)) {
             AuthenticationStatus status = securityContext.authenticate(
-                    request, response, withParams().credential(new CallerOnlyCredential(name)));
+                    request, response, AuthenticationParameters.withParams().credential(new CallerOnlyCredential(name)));
 
             response.getWriter().write("Authentication status: " + status.name() + "\n");
         }

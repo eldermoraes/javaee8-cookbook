@@ -5,7 +5,7 @@ import javax.security.enterprise.AuthenticationException;
 import javax.security.enterprise.AuthenticationStatus;
 import javax.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
 import javax.security.enterprise.authentication.mechanism.http.HttpMessageContext;
-import static java.util.Arrays.asList;
+import java.util.Arrays;
 import java.util.HashSet;
 import javax.security.enterprise.credential.CallerOnlyCredential;
 import javax.security.enterprise.credential.Credential;
@@ -28,7 +28,7 @@ public class AuthenticationMechanism implements HttpAuthenticationMechanism {
             CallerOnlyCredential callerOnlyCredential = (CallerOnlyCredential) credential;
 
             if ("user".equals(callerOnlyCredential.getCaller())) {
-                return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(asList("role1","role2")));
+                return httpMessageContext.notifyContainerAboutLogin(callerOnlyCredential.getCaller(), new HashSet<>(Arrays.asList("role1","role2")));
             } else{
                 throw new AuthenticationException();
             }
