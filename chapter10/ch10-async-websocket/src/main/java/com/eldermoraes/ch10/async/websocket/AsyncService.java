@@ -21,5 +21,6 @@ public class AsyncService {
         AsyncClient client = new AsyncClient(response);
         client.connect();
         client.send("Message from client " + new Date().getTime());
+        client.close();
     }
 }

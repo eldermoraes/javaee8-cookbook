@@ -3,6 +3,8 @@ package com.eldermoraes.ch10.async.websocket;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.websocket.ClientEndpoint;
 import javax.websocket.ContainerProvider;
@@ -52,5 +54,13 @@ public class AsyncClient {
 
     public void send(String message) {
         session.getAsyncRemote().sendText(message);
+    }
+    
+    public void close(){
+        try {
+            session.close();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
 }

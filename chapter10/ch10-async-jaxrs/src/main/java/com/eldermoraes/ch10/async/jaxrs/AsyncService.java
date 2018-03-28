@@ -2,6 +2,7 @@ package com.eldermoraes.ch10.async.jaxrs;
 
 import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -33,6 +34,11 @@ public class AsyncService {
         target = client.target("http://localhost:8080/ch10-async-jaxrs/remoteUser");
     }
     
+    @PreDestroy
+    public void destroy(){
+        client.close();
+    }
+    
     @GET
     public void asyncService(@Suspended AsyncResponse response){
         target.request().async().get(new InvocationCallback<Response>() {
@@ -43,7 +49,7 @@ public class AsyncService {
 
             @Override
             public void failed(Throwable thrwbl) {
-                System.err.println(thrwbl.getMessage());
+                response.resume(Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(thrwbl.getMessage()).build());
             }
         });
                 

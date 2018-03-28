@@ -26,6 +26,9 @@ public class AsyncService {
                 .supplyAsync(() -> userBean.getUser())
                 .thenAcceptAsync((u) -> {
                     response.resume(Response.ok(u).build());
+                }).exceptionally((t) -> {
+                    response.resume(Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(t.getMessage()).build());
+                    return null;
                 });
     }
 }
