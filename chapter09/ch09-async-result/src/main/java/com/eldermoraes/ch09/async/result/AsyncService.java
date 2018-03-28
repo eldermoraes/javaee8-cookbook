@@ -22,7 +22,11 @@ public class AsyncService {
 
     @GET
     public void asyncService(@Suspended AsyncResponse response) {
-        client.getResult().thenApply(this::readResponse).thenAccept(response::resume);
+        try{
+            client.getResult().thenApply(this::readResponse).thenAccept(response::resume);
+        } catch(Exception e){
+            response.resume(Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e).build());
+        }        
     }
 
     private String readResponse(Response response) {

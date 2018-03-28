@@ -3,6 +3,7 @@ package com.eldermoraes.ch09.async.result.client;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -27,6 +28,11 @@ public class AsyncResultClient {
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .build();
         target = client.target("http://localhost:8080/ch09-async-result/userService");
+    }
+    
+    @PreDestroy
+    public void destroy(){
+        client.close();
     }
     
     public CompletionStage<Response> getResult(){

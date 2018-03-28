@@ -1,8 +1,7 @@
 package com.eldermoraes.ch09.async.transaction;
 
 import java.util.concurrent.Callable;
-import javax.naming.Context;
-import javax.naming.InitialContext;
+import javax.enterprise.inject.spi.CDI;
 import javax.naming.NamingException;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -35,9 +34,8 @@ public class AsyncTask implements Callable<User> {
     }
 
     private void performLookups() throws NamingException{
-        Context ctx = new InitialContext();
-        userTransaction = (UserTransaction) ctx.lookup("java:comp/UserTransaction");
-        userBean = (UserBean) ctx.lookup("java:global/ch09-async-transaction/UserBean");
+        userBean = CDI.current().select(UserBean.class).get();
+        userTransaction = CDI.current().select(UserTransaction.class).get();
     }
     
 }

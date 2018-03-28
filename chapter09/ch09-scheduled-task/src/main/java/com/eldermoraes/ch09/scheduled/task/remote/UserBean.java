@@ -3,11 +3,13 @@ package com.eldermoraes.ch09.scheduled.task.remote;
 import com.eldermoraes.ch09.scheduled.task.User;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author eldermoraes
  */
+@Stateless
 public class UserBean {
     
     public User getUser(){

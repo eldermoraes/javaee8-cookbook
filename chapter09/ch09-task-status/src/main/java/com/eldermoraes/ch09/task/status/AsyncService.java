@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
 @Path("asyncService")
 public class AsyncService {
 
-    @Resource(name = "LocalManagedExecutorService")
+    @Resource
     private ManagedExecutorService executor;
 
     @GET
