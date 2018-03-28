@@ -2,6 +2,7 @@ package com.eldermoraes.ch08.micro_x_mono.micro.gateway;
 
 import com.eldermoraes.ch08.micro_x_mono.micro.gateway.pojo.UserAddress;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -35,6 +36,11 @@ public class GatewayResource {
         client = ClientBuilder.newClient();
         targetUser = client.target(hostURI + "ch08-micro_x_mono-micro-user/");
         targetAddress = client.target(hostURI + "ch08-micro_x_mono-micro-address/");
+    }
+    
+    @PreDestroy
+    public void destroy(){
+        client.close();
     }
 
     @GET

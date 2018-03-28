@@ -56,7 +56,4 @@ public class UserService {
         userBean.remove(userBean.findById(id));
         return Response.accepted().build();
     }
-    
-    
-    
 }

@@ -1,4 +1,4 @@
-package com.eldermoraes.ch08.micro_x_mono.micro.user.entity.bean;
+package com.eldermoraes.ch08.micro_x_mono.micro.user.bean;
 
 import com.eldermoraes.ch08.micro_x_mono.micro.user.entity.User;
 import java.util.ArrayList;

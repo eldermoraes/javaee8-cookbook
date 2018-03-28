@@ -1,7 +1,7 @@
-package com.eldermoraes.ch08.micro_x_mono.micro.user.entity.service;
+package com.eldermoraes.ch08.micro_x_mono.micro.user.service;
 
 import com.eldermoraes.ch08.micro_x_mono.micro.user.entity.User;
-import com.eldermoraes.ch08.micro_x_mono.micro.user.entity.bean.UserBeanMock;
+import com.eldermoraes.ch08.micro_x_mono.micro.user.bean.UserBeanMock;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;

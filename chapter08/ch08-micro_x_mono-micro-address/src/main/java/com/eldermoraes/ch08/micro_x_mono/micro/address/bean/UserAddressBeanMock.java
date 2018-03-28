@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
 /**
  *
@@ -15,7 +14,7 @@ import javax.persistence.PersistenceContextType;
 @Stateless
 public class UserAddressBeanMock {
 
-    @PersistenceContext(type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext
     private EntityManager em;
 
     private static final List<UserAddress> ADDRESS_LIST = new ArrayList<>();

@@ -1,4 +1,4 @@
-package com.eldermoraes.ch08.micro_x_mono.micro.user.entity.service;
+package com.eldermoraes.ch08.micro_x_mono.micro.user.service;
 
 import javax.ws.rs.core.Application;
 

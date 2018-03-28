@@ -1,11 +1,10 @@
-package com.eldermoraes.ch08.micro_x_mono.micro.user.entity.bean;
+package com.eldermoraes.ch08.micro_x_mono.micro.user.bean;
 
 import com.eldermoraes.ch08.micro_x_mono.micro.user.entity.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -18,7 +17,7 @@ import javax.persistence.criteria.Root;
 @Stateless
 public class UserBean {
 
-    @PersistenceContext(type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext
     private EntityManager em;
 
     public void add(User user) {
