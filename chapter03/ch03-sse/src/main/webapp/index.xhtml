@@ -8,10 +8,10 @@
     <h:body>
         <h:form>
             <h:outputLabel for="countClient" value="Number of Clients" />
-            <h:inputText id="countClient" value="#{eventBean.countClient}" />
+            <h:inputText id="countClient" value="#{sseBean.countClient}" />
             
             <br />
-            <h:commandButton type="submit" action="#{eventBean.sendEvents()}" value="Send Events" />
+            <h:commandButton type="submit" action="#{sseBean.sendEvent()}" value="Send Events" />
         </h:form>
     </h:body>
 </html>

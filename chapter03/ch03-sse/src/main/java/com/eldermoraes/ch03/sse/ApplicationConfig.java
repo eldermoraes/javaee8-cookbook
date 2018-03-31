@@ -1,4 +1,4 @@
-package com.eldermoraes.ch03.sse.config;
+package com.eldermoraes.ch03.sse;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

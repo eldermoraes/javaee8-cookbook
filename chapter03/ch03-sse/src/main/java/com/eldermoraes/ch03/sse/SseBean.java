@@ -5,14 +5,16 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
@@ -25,62 +27,63 @@ import javax.ws.rs.sse.SseEventSource;
  */
 @ViewScoped
 @Named
-public class EventBean implements Serializable {
+public class SseBean implements Serializable {
 
     @NotNull
     @Positive
     private Integer countClient;
+    
+    private Client client;
+    
+    @PostConstruct
+    public void init(){
+        client = ClientBuilder.newClient();
+    }
+    
+    @PreDestroy
+    public void destroy(){
+        client.close();
+    }
 
-    public void sendEvents() throws URISyntaxException, InterruptedException {
-        WebTarget target = ClientBuilder.newClient().target(URI.create("http://localhost:8080/ch03-sse/"));
-        Response response = target.path("webresources/server-event/start")
-                .queryParam("testSources", countClient)
+    public void sendEvent() throws URISyntaxException, InterruptedException {
+        WebTarget target = client.target(URI.create("http://localhost:8080/ch03-sse/"));
+        Response response = target.path("webresources/serverSentService/start")
                 .request()
                 .post(Entity.json(""), Response.class);
 
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Start status: " + response.getStatusInfo() + " [" + response.getStatus() + "]"));
+                new FacesMessage("Sse Endpoint: " + response.getLocation()));
 
-        final Map<Integer, String> messageCounts = new ConcurrentHashMap<>(countClient);
-        final CountDownLatch doneLatch = new CountDownLatch(countClient);
+        final Map<Integer, String> messageMap = new ConcurrentHashMap<>(countClient);
         final SseEventSource[] sources = new SseEventSource[countClient];
 
         final String processUriString = target.getUri().relativize(response.getLocation()).toString();
-        final WebTarget sseTarget = target.path(processUriString).queryParam("testSource", "true");
-
-        final StringBuilder messageBroadcast = new StringBuilder();
+        final WebTarget sseTarget = target.path(processUriString);
 
         for (int i = 0; i < countClient; i++) {
-            String eventMessage = "Timestamp is " + System.currentTimeMillis();
             final int id = i;
             sources[id] = SseEventSource.target(sseTarget).build();
             sources[id].register((event) -> {
                 final String message = event.readData(String.class);
 
-                messageBroadcast.append(message).append("        ");
-
-                if ("done".equals(message)) {
-                    messageCounts.put(id, eventMessage);
-                    doneLatch.countDown();
+                if (message.contains("Text")) {
+                    messageMap.put(id, message);
                 }
             });
             sources[i].open();
         }
 
-        doneLatch.await(10, TimeUnit.SECONDS);
+        TimeUnit.SECONDS.sleep(10);
 
         for (SseEventSource source : sources) {
             source.close();
         }
 
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(messageBroadcast.toString()));
-
         for (int i = 0; i < countClient; i++) {
-            final String count = messageCounts.get(i);
+            final String message = messageMap.get(i);
 
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Thread " + i + " ended. " + count));
+                    new FacesMessage("Message sent to client " + (i + 1) + ": " + message));
         }
     }
 
