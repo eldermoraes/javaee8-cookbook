@@ -9,6 +9,7 @@
         <h:form>
             <h:panelGrid columns="3">
                 <h:outputLabel value="Name|E-mail:" for="userNameEmail"/>
+                <br />
                 <h:inputText id="userNameEmail" value="#{userBean.user}" converter="userConverter" validator="userValidator"/>                         
                 <h:message for="userNameEmail"/>
             </h:panelGrid>
