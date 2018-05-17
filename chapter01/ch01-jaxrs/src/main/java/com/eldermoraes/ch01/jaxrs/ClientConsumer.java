@@ -1,6 +1,5 @@
 package com.eldermoraes.ch01.jaxrs;
 
-import static com.eldermoraes.ch01.jaxrs.ServerMock.BASE_PATH;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -10,7 +9,7 @@ import javax.ws.rs.sse.SseEventSource;
 public class ClientConsumer {
 
     public static final Client CLIENT = ClientBuilder.newClient();
-    public static final WebTarget WEB_TARGET = CLIENT.target(ServerMock.CONTEXT + BASE_PATH);
+    public static final WebTarget WEB_TARGET = CLIENT.target(ServerMock.CONTEXT + ServerMock.BASE_PATH);
     
     public static void main(String[] args) {
         consume();
