@@ -1,0 +1,3 @@
+com/eldermoraes/ch02/ejb/concurrency/UserClassLevelBean.class
+com/eldermoraes/ch02/ejb/concurrency/UserMethodLevelBean.class
+com/eldermoraes/ch02/ejb/concurrency/UserSelfManagedBean.class
