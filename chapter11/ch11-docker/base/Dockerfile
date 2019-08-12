@@ -2,8 +2,8 @@ FROM openjdk:8-jdk
 
 ENV GLASSFISH_HOME /usr/local/glassfish
 ENV PATH ${GLASSFISH_HOME}/bin:$PATH
-ENV GLASSFISH_PKG latest-glassfish.zip
-ENV GLASSFISH_URL https://download.oracle.com/glassfish/5.0/nightly/latest-glassfish.zip
+ENV GLASSFISH_PKG glassfish-5.1.0.zip
+ENV GLASSFISH_URL https://www.eclipse.org/downloads/download.php?file=/glassfish/glassfish-5.1.0.zip&r=1
 
 RUN mkdir -p ${GLASSFISH_HOME}
 

@@ -1,1 +1,1 @@
-docker build -t eldermoraes/gf-javaee-cookbook .
+docker build -t eldermoraes/gf-jakartaee-cookbook .
