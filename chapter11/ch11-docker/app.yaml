@@ -14,49 +14,48 @@
 # limitations under the License.
 #
 
-kind: Service
-apiVersion: v1
+kind: Service
+apiVersion: v1
 metadata:
-  name: gf-jakartaee-cookbook
-  labels:
-    app: gf-jakartaee-cookbook
+  name: gf-jakartaee-cookbook
+  labels:
+    app: gf-jakartaee-cookbook
 spec:
-  type: NodePort
-  selector:
-    app: gf-jakartaee-cookbook
-  ports:
-  - port: 80
-    targetPort: 8080
-    name: http
-  - port: 4848
-    targetPort: 4848
-    name: admin
-  - port: 8686
-    targetPort: 8686
-    name: jmx
-  - port: 8009
-    targetPort: 8009
-    name: ajp
-  - port: 8181
-    targetPort: 8181
-    name: https
+  type: NodePort
+  selector:
+    app: gf-jakartaee-cookbook
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http
+  - port: 4848
+    targetPort: 4848
+    name: admin
+  - port: 8686
+    targetPort: 8686
+    name: jmx
+  - port: 8009
+    targetPort: 8009
+    name: ajp
+  - port: 8181
+    targetPort: 8181
+    name: https
 ---
-kind: Deployment
-apiVersion: extensions/v1beta1
+kind: Deployment
+apiVersion: extensions/v1beta1
 metadata:
-  name: gf-jakartaee-cookbook
+  name: gf-jakartaee-cookbook
 spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: gf-jakartaee-cookbook
-        version: v1
-    spec:
-      containers:
-      - name: gf-jakartaee-cookbook
-        image: eldermoraes/gf-jakartaee-cookbook
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
----
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gf-jakartaee-cookbook
+        version: v1
+    spec:
+      containers:
+      - name: gf-jakartaee-cookbook
+        image: eldermoraes/gf-jakartaee-cookbook
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
