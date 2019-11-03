@@ -15,9 +15,8 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import org.eclipse.jnosql.artemis.graph.GraphTemplate;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -26,9 +25,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.jnosql.artemis.Database;
-import org.jnosql.artemis.DatabaseType;
-import org.jnosql.artemis.graph.GraphTemplate;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -42,7 +41,6 @@ public class RoleService {
     private GraphTemplate graphTemplate;
     
     @Inject
-    @Database(DatabaseType.GRAPH)
     private RoleRepository roleRepository;
     
     @Inject
@@ -56,7 +54,7 @@ public class RoleService {
                 .has("name", name)
                 .orderBy("name")
                 .asc()
-                .stream();
+                .getResult();
         
         return roles.collect(Collectors.toList());
     }

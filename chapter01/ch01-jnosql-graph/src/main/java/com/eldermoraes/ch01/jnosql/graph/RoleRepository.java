@@ -15,13 +15,14 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
+import jakarta.nosql.mapping.Repository;
+
 import java.util.Optional;
-import org.jnosql.artemis.Repository;
 
 /**
  *
  * @author eldermoraes
  */
-public interface RoleRepository extends Repository<Role, String>{
+public interface RoleRepository extends Repository<Role, String> {
     Optional<Role> findByName(String name);
 }

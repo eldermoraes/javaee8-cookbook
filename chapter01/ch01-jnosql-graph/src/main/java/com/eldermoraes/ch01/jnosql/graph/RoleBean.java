@@ -15,11 +15,10 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
+import org.eclipse.jnosql.artemis.graph.GraphTemplate;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import org.jnosql.artemis.Database;
-import org.jnosql.artemis.DatabaseType;
-import org.jnosql.artemis.graph.GraphTemplate;
 
 /**
  *
@@ -32,7 +31,6 @@ public class RoleBean {
     private GraphTemplate graphTemplate;
     
     @Inject
-    @Database(DatabaseType.GRAPH)
     private RoleRepository roleRepository;
 
     public Role create(String name){
