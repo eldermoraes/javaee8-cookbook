@@ -13,32 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eldermoraes.ch01.jnosql.graph.driver;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Disposes;
-import javax.inject.Inject;
-import javax.ws.rs.Produces;
-import org.apache.tinkerpop.gremlin.structure.Graph;
+package com.eldermoraes.ch01.jnosql.keyvalue;
 
 /**
  *
  * @author eldermoraes
  */
-@ApplicationScoped
-public class GraphProducer {
-
-    @Inject
-    private GraphSupplier graphSupplier;
-
-    @Produces
-    @RequestScoped
-    public Graph getGraph() {
-        return graphSupplier.get();
-    }
-
-    public void dispose(@Disposes Graph graph) throws Exception {
-        graph.close();
-    }
+public class Developer {
+    
 }

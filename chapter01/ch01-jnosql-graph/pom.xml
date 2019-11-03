@@ -17,7 +17,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tinkerpop.version>3.4.4</tinkerpop.version>
-        <jnosql.version>0.0.9</jnosql.version>        
+        <jnosql.version>0.0.9</jnosql.version>
     </properties>
     
     <dependencies>
