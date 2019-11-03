@@ -59,8 +59,8 @@ public class RoleService {
         return roles.collect(Collectors.toList());
     }
     
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
     public Response createManager(String manager, String managed){
         Role managerRole = roleRepository.findByName(manager).orElse(roleBean.create(manager));
         Role managedRole = roleRepository.findByName(managed).orElse(roleBean.create(managed));
