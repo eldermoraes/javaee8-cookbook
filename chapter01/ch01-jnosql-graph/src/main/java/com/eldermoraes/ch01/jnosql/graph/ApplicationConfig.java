@@ -15,32 +15,13 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
-import javax.enterprise.context.ApplicationScoped;
-import org.apache.tinkerpop.gremlin.structure.Graph;
-import javax.inject.Inject;
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
-import org.jnosql.artemis.graph.GraphTemplate;
+import javax.ws.rs.core.Application;
 
 /**
  *
  * @author eldermoraes
  */
-@ApplicationScoped
-public class DeveloperBean {
+@javax.ws.rs.ApplicationPath("resources")
+public class ApplicationConfig extends Application {
 
-    @Inject
-    private GraphTemplate graph;
-
-    @Inject
-    private Graph thinkerpop;
-
-    @Inject
-    private DeveloperService service;
-
-    private final Jsonb jsonbBuilder = JsonbBuilder.create();
-
-    public String getBuddiesByTechnology(String technology) {
-        return jsonbBuilder.toJson(service.findByTechnology(technology));
-    }
 }

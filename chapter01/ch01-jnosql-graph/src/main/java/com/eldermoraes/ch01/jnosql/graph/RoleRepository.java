@@ -15,15 +15,13 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
+import java.util.Optional;
+import org.jnosql.artemis.Repository;
+
 /**
  *
  * @author eldermoraes
  */
-public interface Register {
-    
-    RegisterWork developer(DeveloperDTO dto);
-    
-    interface RegisterWork {
-        void works(String technology);
-    }
+public interface RoleRepository extends Repository<Role, String>{
+    Optional<Role> findByName(String name);
 }

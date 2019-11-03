@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eldermoraes.ch01.jnosql.graph;
+package com.eldermoraes.ch01.jnosql.graph.driver;
 
-import org.jnosql.artemis.Repository;
+import java.util.function.Supplier;
+import org.apache.tinkerpop.gremlin.structure.Graph;
 
 /**
  *
  * @author eldermoraes
  */
-public interface DeveloperRepository extends Repository<Developer, Long>  {
+public interface GraphSupplier extends Supplier<Graph> {
     
 }

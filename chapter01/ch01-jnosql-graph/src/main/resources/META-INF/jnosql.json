@@ -1,0 +1,11 @@
+[
+  {
+    "description": "The Neo4J configuration",
+    "name": "name",
+    "settings": {
+      "url": "bolt://neo4j:7687",
+      "admin": "neo4j",
+      "password": "admin"
+    }
+  }
+]

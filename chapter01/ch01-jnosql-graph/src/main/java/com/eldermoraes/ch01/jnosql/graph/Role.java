@@ -15,19 +15,42 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
-import java.util.Locale;
-import java.util.function.Supplier;
+import org.jnosql.artemis.Column;
+import org.jnosql.artemis.Entity;
+import org.jnosql.artemis.Id;
 
 /**
  *
  * @author eldermoraes
  */
-public enum Edges implements Supplier<String> {
+@Entity
+public class Role {
 
-    WORKS;
+    @Id
+    private Integer id;
 
-    @Override
-    public String get() {
-        return name().toLowerCase(Locale.US);
+    @Column
+    private String name;
+    
+    Role(){};
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
