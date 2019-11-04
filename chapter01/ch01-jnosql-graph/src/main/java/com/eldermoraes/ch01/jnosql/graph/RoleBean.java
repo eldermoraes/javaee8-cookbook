@@ -15,6 +15,9 @@
  */
 package com.eldermoraes.ch01.jnosql.graph;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.eclipse.jnosql.artemis.graph.GraphTemplate;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -39,8 +42,24 @@ public class RoleBean {
         return roleRepository.findByName(name).get();
     }
     
+    public Role createCEO(){
+        Role role = new Role("CEO");
+        graphTemplate.insert(role);       
+        return roleRepository.findByName("CEO").get();
+    }    
+    
     public void createManager(Role manager, Role managed){
         graphTemplate.edge(manager, "manage", managed);
     }
-    
+ 
+    public List<Role> findByName(String name){
+        Stream<Role> roles = graphTemplate.getTraversalVertex()
+                .hasLabel(Role.class)
+                .has("name", name)
+                .orderBy("name")
+                .asc()
+                .getResult();
+        
+        return roles.collect(Collectors.toList());        
+    }
 }

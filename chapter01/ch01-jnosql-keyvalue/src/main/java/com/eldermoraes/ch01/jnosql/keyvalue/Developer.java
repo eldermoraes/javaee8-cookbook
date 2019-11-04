@@ -15,10 +15,19 @@
  */
 package com.eldermoraes.ch01.jnosql.keyvalue;
 
+import java.io.Serializable;
+import org.jnosql.artemis.Entity;
+import org.jnosql.artemis.Id;
+
 /**
  *
  * @author eldermoraes
  */
-public class Developer {
+@Entity
+public class Developer implements Serializable{
     
+    @Id
+    private Integer id;
+    
+    private String name;
 }

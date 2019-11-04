@@ -20,14 +20,14 @@ import org.eclipse.jnosql.artemis.graph.GraphTemplate;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 
 /**
  *
@@ -48,20 +48,16 @@ public class RoleService {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Role> findByName(String name){
-        Stream<Role> roles = graphTemplate.getTraversalVertex()
-                .hasLabel(Role.class)
-                .has("name", name)
-                .orderBy("name")
-                .asc()
-                .getResult();
-        
-        return roles.collect(Collectors.toList());
+    @Path("/find/{name}")
+    public List<Role> findByName(@PathParam("name") String name){        
+        return roleBean.findByName(name);
     }
     
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-    public Response createManager(String manager, String managed){
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/create/{manager}/{managed}")
+    public Response createManager(@PathParam("manager") String manager, 
+            @PathParam("managed") String managed){
         Role managerRole = roleRepository.findByName(manager).orElse(roleBean.create(manager));
         Role managedRole = roleRepository.findByName(managed).orElse(roleBean.create(managed));
         
@@ -69,4 +65,15 @@ public class RoleService {
         
         return Response.status(Response.Status.CREATED).build();
     }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/createCEO")
+    public Response createCEO(){
+        roleBean.createCEO();
+        
+        return Response.status(Response.Status.CREATED).build();
+    }    
+    
+    
 }
