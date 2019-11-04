@@ -28,12 +28,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.microprofile.config</groupId>
-            <artifactId>microprofile-config-api</artifactId>
-            <version>1.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.eclipse.jnosql.artemis</groupId>
             <artifactId>artemis-graph</artifactId>
             <version>${jnosql.version}</version>
