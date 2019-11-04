@@ -15,18 +15,19 @@
  */
 package com.eldermoraes.ch01.jnosql.keyvalue;
 
+import jakarta.nosql.keyvalue.BucketManager;
+import org.eclipse.jnosql.diana.redis.keyvalue.Counter;
+import org.eclipse.jnosql.diana.redis.keyvalue.RedisBucketManagerFactory;
+import org.eclipse.jnosql.diana.redis.keyvalue.RedisConfiguration;
+import org.eclipse.jnosql.diana.redis.keyvalue.SortedSet;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-import org.jnosql.diana.api.key.BucketManager;
-import org.jnosql.diana.redis.key.Counter;
-import org.jnosql.diana.redis.key.RedisBucketManagerFactory;
-import org.jnosql.diana.redis.key.RedisConfiguration;
-import org.jnosql.diana.redis.key.SortedSet;
 
 /**
  *

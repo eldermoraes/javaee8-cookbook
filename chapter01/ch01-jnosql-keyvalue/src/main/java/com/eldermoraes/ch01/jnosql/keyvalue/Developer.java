@@ -15,9 +15,10 @@
  */
 package com.eldermoraes.ch01.jnosql.keyvalue;
 
+import jakarta.nosql.mapping.Entity;
+import jakarta.nosql.mapping.Id;
+
 import java.io.Serializable;
-import org.jnosql.artemis.Entity;
-import org.jnosql.artemis.Id;
 
 /**
  *

@@ -15,7 +15,8 @@
  */
 package com.eldermoraes.ch01.jnosql.keyvalue;
 
-import org.jnosql.artemis.Repository;
+
+import jakarta.nosql.mapping.Repository;
 
 /**
  *
