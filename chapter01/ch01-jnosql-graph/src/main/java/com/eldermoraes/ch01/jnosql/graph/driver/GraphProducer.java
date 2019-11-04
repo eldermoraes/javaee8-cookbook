@@ -18,9 +18,12 @@ package com.eldermoraes.ch01.jnosql.graph.driver;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
+import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
-import javax.ws.rs.Produces;
+
 import org.apache.tinkerpop.gremlin.structure.Graph;
+import org.apache.tinkerpop.gremlin.structure.util.GraphFactoryClass;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  *
@@ -30,15 +33,16 @@ import org.apache.tinkerpop.gremlin.structure.Graph;
 public class GraphProducer {
 
     @Inject
-    private GraphSupplier graphSupplier;
+    @ConfigProperty(name = "graph")
+    private Graph graph;
 
     @Produces
-    @RequestScoped
+    @ApplicationScoped
     public Graph getGraph() {
-        return graphSupplier.get();
+        return graph;
     }
 
-    public void dispose(@Disposes Graph graph) throws Exception {
+    public void close(@Disposes Graph graph) throws Exception {
         graph.close();
     }
 }
