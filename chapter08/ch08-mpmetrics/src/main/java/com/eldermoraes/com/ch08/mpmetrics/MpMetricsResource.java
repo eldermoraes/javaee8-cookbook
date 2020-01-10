@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.eldermoraes.com.ch08.mpmetrics;
 
 import org.eclipse.microprofile.metrics.annotation.Metered;
@@ -29,6 +28,9 @@ import javax.json.JsonObject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -41,15 +43,12 @@ public class MpMetricsResource {
 
     private static final JsonBuilderFactory JSON = Json.createBuilderFactory(Collections.emptyMap());
 
-    @Inject
-    private API api;
-
     @Timed(name = "getResourceTimed")
     @Path("/timed")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject getResourceTimed(){
-        String response = api.getResource();
+    public JsonObject getResourceTimed() {
+        String response = getResource();
 
         return JSON.createObjectBuilder()
                 .add("message", response)
@@ -60,12 +59,30 @@ public class MpMetricsResource {
     @Path("/metered")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public JsonObject getResourceMetered(){
-        String response = api.getResource();
+    public JsonObject getResourceMetered() {
+        String response = getResource();
 
         return JSON.createObjectBuilder()
                 .add("message", response)
                 .build();
     }
 
+    private String getResource() {
+        Client client = null;
+        String response;
+
+        try {
+            client = ClientBuilder.newClient();
+            WebTarget target = client.target("https://eldermoraes.com/book");
+            response = target.request()
+                    .header("Content-Type", "application/json")
+                    .get(String.class);
+        } finally {
+            if (client != null) {
+                client.close();
+            }
+        }
+
+        return response;
+    }
 }
