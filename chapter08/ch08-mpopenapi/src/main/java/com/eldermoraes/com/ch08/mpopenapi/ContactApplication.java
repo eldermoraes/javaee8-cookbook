@@ -17,7 +17,6 @@
 package com.eldermoraes.com.ch08.mpopenapi;
 
 import java.util.Set;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -28,9 +27,6 @@ import org.eclipse.microprofile.openapi.annotations.info.Contact;
 import org.eclipse.microprofile.openapi.annotations.info.Info;
 import org.eclipse.microprofile.openapi.annotations.servers.Server;
 
-/**
- * Simple Application that produces a greeting message.
- */
 @ApplicationScoped
 @ApplicationPath("/ch08mpopenapi")
 @OpenAPIDefinition(info = @Info(
