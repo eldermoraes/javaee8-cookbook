@@ -32,15 +32,14 @@ public class ReadinessHealthCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         if (isAcessible()){
-            return HealthCheckResponse.up("I'm live and ready!");
+            return HealthCheckResponse.up("I'm up and ready!");
         } else{
-            return HealthCheckResponse.down("I'm live, but not ready...");
+            return HealthCheckResponse.down("I'm up, but not ready...");
         }
     }
     
     private boolean isAcessible(){
-        Random random = new Random();
-        return random.nextBoolean();
+        return new Random().nextBoolean();
     }
     
 }

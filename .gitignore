@@ -56,3 +56,6 @@
 /chapter10/ch10-async-jaxrs/target/
 /chapter01/ch01-jnosql-graph/target/
 /chapter01/ch01-jnosql-keyvalue/target/
+/chapter08/ch08-mpmetrics/target/
+/chapter08/ch08-mpopenapi/target/
+/chapter08/ch08-mphealthcheck/target/
