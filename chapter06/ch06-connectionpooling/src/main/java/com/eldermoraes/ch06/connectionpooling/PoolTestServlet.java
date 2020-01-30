@@ -3,8 +3,9 @@ package com.eldermoraes.ch06.connectionpooling;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +31,8 @@ public class PoolTestServlet extends HttpServlet {
             config = new SysConfigBean();
             writer.write(config.getSysConfig());
         } catch (SQLException | NamingException ex) {
+            System.err.println(ex.getMessage());
+        } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
     }
