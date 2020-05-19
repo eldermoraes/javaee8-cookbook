@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.eldermoraes.ch02.jpa.Ch02JpaTest" time="2.787" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="com.eldermoraes.ch02.jpa.Ch02JpaTest" time="3.144" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.144-b01"/>
+    <property name="user.country.format" value="BR"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="user.country" value="BR"/>
+    <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
@@ -25,14 +27,15 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
-    <property name="maven.ext.class.path" value="/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar"/>
-    <property name="classworlds.conf" value="/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven/bin/m2.conf"/>
+    <property name="classworlds.conf" value="/usr/local/Cellar/maven/3.5.0/libexec/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/eldermoraes/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="maven.conf" value="/usr/local/Cellar/maven/3.5.0/libexec/conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.12.5"/>
+    <property name="os.version" value="10.13.6"/>
+    <property name="library.jansi.path" value="/usr/local/Cellar/maven/3.5.0/libexec/lib/jansi-native/osx64"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="user.home" value="/Users/eldermoraes"/>
     <property name="user.timezone" value="America/Sao_Paulo"/>
@@ -40,20 +43,20 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="eldermoraes"/>
-    <property name="java.class.path" value="/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven/boot/plexus-classworlds-2.4.jar"/>
+    <property name="java.class.path" value="/usr/local/Cellar/maven/3.5.0/libexec/boot/plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="user.language" value="pt"/>
+    <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.version" value="1.8.0_144"/>
     <property name="java.ext.dirs" value="/Users/eldermoraes/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven"/>
+    <property name="maven.home" value="/usr/local/Cellar/maven/3.5.0/libexec"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -62,306 +65,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.eldermoraes.ch02.jpa.Ch02JpaTest" name="persistData" time="2.713">
-    <error message="The bean encountered a non-application exception; nested exception is: 
-	javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement" type="javax.ejb.EJBException">javax.ejb.EJBException: The bean encountered a non-application exception; nested exception is: 
-	javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement
-	at org.apache.openejb.core.ivm.BaseEjbProxyHandler.convertException(BaseEjbProxyHandler.java:427)
-	at org.apache.openejb.core.ivm.BaseEjbProxyHandler.invoke(BaseEjbProxyHandler.java:329)
-	at com.eldermoraes.ch02.jpa.UserBean$$LocalBeanProxy.add(com/eldermoraes/ch02/jpa/UserBean.java)
-	at com.eldermoraes.ch02.jpa.Ch02JpaTest.persistData(Ch02JpaTest.java:52)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1763)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1677)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1683)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1187)
-	at org.apache.openejb.persistence.JtaEntityManager.persist(JtaEntityManager.java:149)
-	at com.eldermoraes.ch02.jpa.UserBean.add(UserBean.java:24)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext$Invocation.invoke(ReflectionInvocationContext.java:192)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext.proceed(ReflectionInvocationContext.java:173)
-	at org.apache.openejb.monitoring.StatsInterceptor.record(StatsInterceptor.java:181)
-	at org.apache.openejb.monitoring.StatsInterceptor.invoke(StatsInterceptor.java:100)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext$Invocation.invoke(ReflectionInvocationContext.java:192)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext.proceed(ReflectionInvocationContext.java:173)
-	at org.apache.openejb.core.interceptor.InterceptorStack.invoke(InterceptorStack.java:85)
-	at org.apache.openejb.core.stateless.StatelessContainer._invoke(StatelessContainer.java:227)
-	at org.apache.openejb.core.stateless.StatelessContainer.invoke(StatelessContainer.java:194)
-	at org.apache.openejb.core.ivm.EjbObjectProxyHandler.synchronizedBusinessMethod(EjbObjectProxyHandler.java:317)
-	at org.apache.openejb.core.ivm.EjbObjectProxyHandler.businessMethod(EjbObjectProxyHandler.java:312)
-	at org.apache.openejb.core.ivm.EjbObjectProxyHandler._invoke(EjbObjectProxyHandler.java:92)
-	at org.apache.openejb.core.ivm.BaseEjbProxyHandler.invoke(BaseEjbProxyHandler.java:325)
-	... 33 more
-Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement
-	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:196)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareStatement(StatementPreparerImpl.java:122)
-	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.prepare(IdentityGenerator.java:89)
-	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:55)
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032)
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3556)
-	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:97)
-	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:480)
-	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:191)
-	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:175)
-	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:210)
-	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:324)
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:288)
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:194)
-	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:125)
-	at org.hibernate.jpa.event.internal.core.JpaPersistEventListener.saveWithGeneratedId(JpaPersistEventListener.java:84)
-	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:206)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:149)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:75)
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:807)
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:780)
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:785)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1181)
-	... 56 more
-Caused by: java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: USER
-	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
-	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
-	at org.hsqldb.jdbc.JDBCPreparedStatement.&lt;init&gt;(Unknown Source)
-	at org.hsqldb.jdbc.JDBCConnection.prepareStatement(Unknown Source)
-	at org.apache.commons.dbcp.DelegatingConnection.prepareStatement(DelegatingConnection.java:508)
-	at org.apache.commons.dbcp.DelegatingConnection.prepareStatement(DelegatingConnection.java:508)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$2.doPrepare(StatementPreparerImpl.java:124)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:186)
-	... 78 more
-Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: USER
-	at org.hsqldb.error.Error.error(Unknown Source)
-	at org.hsqldb.error.Error.error(Unknown Source)
-	at org.hsqldb.SchemaManager.getTable(Unknown Source)
-	at org.hsqldb.ParserDQL.readTableName(Unknown Source)
-	at org.hsqldb.ParserDQL.readRangeVariableForDataChange(Unknown Source)
-	at org.hsqldb.ParserDML.compileInsertStatement(Unknown Source)
-	at org.hsqldb.ParserCommand.compilePart(Unknown Source)
-	at org.hsqldb.ParserCommand.compileStatement(Unknown Source)
-	at org.hsqldb.Session.compileStatement(Unknown Source)
-	at org.hsqldb.StatementManager.compile(Unknown Source)
-	at org.hsqldb.Session.execute(Unknown Source)
-	... 84 more
-</error>
-    <system-out>INFORMAÇÕES - ********************************************************************************
-INFORMAÇÕES - OpenEJB http://tomee.apache.org/
-INFORMAÇÕES - Startup: Tue Aug 22 19:34:44 BRT 2017
-INFORMAÇÕES - Copyright 1999-2015 (C) Apache OpenEJB/TomEE Project, All Rights Reserved.
-INFORMAÇÕES - Version: 4.7.4
-INFORMAÇÕES - Build date: 20160304
-INFORMAÇÕES - Build time: 09:05
-INFORMAÇÕES - ********************************************************************************
-INFORMAÇÕES - openejb.home = /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa
-INFORMAÇÕES - openejb.base = /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa
-INFORMAÇÕES - Created new singletonService org.apache.openejb.cdi.ThreadSingletonServiceImpl@2cb4c3ab
-INFORMAÇÕES - Succeeded in installing singleton service
-INFORMAÇÕES - Using &apos;javax.ejb.embeddable.EJBContainer=true&apos;
-INFORMAÇÕES - Cannot find the configuration file [conf/openejb.xml].  Will attempt to create one for the beans deployed.
-INFORMAÇÕES - Configuring Service(id=Default Security Service, type=SecurityService, provider-id=Default Security Service)
-INFORMAÇÕES - Configuring Service(id=Default Transaction Manager, type=TransactionManager, provider-id=Default Transaction Manager)
-INFORMAÇÕES - Configuring Service(id=userDb, type=Resource, provider-id=Default JDBC Database)
-INFORMAÇÕES - Creating TransactionManager(id=Default Transaction Manager)
-INFORMAÇÕES - Creating SecurityService(id=Default Security Service)
-INFORMAÇÕES - Creating Resource(id=userDb)
-INFORMAÇÕES - Found EjbModule in classpath: /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa/target/classes
-INFORMAÇÕES - Beginning load: /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa/target/classes
-INFORMAÇÕES - Configuring enterprise application: /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa
-INFORMAÇÕES - Auto-deploying ejb UserBean: EjbDeployment(deployment-id=UserBean)
-INFORMAÇÕES - Configuring Service(id=Default Stateless Container, type=Container, provider-id=Default Stateless Container)
-INFORMAÇÕES - Auto-creating a container for bean UserBean: Container(type=STATELESS, id=Default Stateless Container)
-INFORMAÇÕES - Creating Container(id=Default Stateless Container)
-INFORMAÇÕES - Configuring Service(id=Default Managed Container, type=Container, provider-id=Default Managed Container)
-INFORMAÇÕES - Auto-creating a container for bean com.eldermoraes.ch02.jpa.Ch02JpaTest: Container(type=MANAGED, id=Default Managed Container)
-INFORMAÇÕES - Creating Container(id=Default Managed Container)
-INFORMAÇÕES - Using directory /var/folders/w4/f_zq9gx10ksfqx7h8j3t9q880000gn/T for stateful session passivation
-INFORMAÇÕES - Configuring PersistenceUnit(name=ch02-jpa-pu, provider=org.hibernate.ejb.HibernatePersistence)
-INFORMAÇÕES - Auto-creating a Resource with id &apos;userDbNonJta&apos; of type &apos;DataSource for &apos;ch02-jpa-pu&apos;.
-INFORMAÇÕES - Configuring Service(id=userDbNonJta, type=Resource, provider-id=userDb)
-INFORMAÇÕES - Creating Resource(id=userDbNonJta)
-INFORMAÇÕES - Adjusting PersistenceUnit ch02-jpa-pu &lt;non-jta-data-source&gt; to Resource ID &apos;userDbNonJta&apos; from &apos;null&apos;
-INFORMAÇÕES - Enterprise application &quot;/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa&quot; loaded.
-INFORMAÇÕES - Assembling app: /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa
-WARN - HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
-INFO - HHH000204: Processing PersistenceUnitInfo [
-	name: ch02-jpa-pu
-	...]
-INFO - HHH000412: Hibernate Core {4.3.1.Final}
-INFO - HHH000206: hibernate.properties not found
-INFO - HHH000021: Bytecode provider name : javassist
-INFO - HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-INFO - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
-INFO - HHH000397: Using ASTQueryTranslatorFactory
-INFORMAÇÕES - PersistenceUnit(name=ch02-jpa-pu, provider=org.hibernate.ejb.HibernatePersistence) - provider time 1227ms
-INFORMAÇÕES - Jndi(name=&quot;java:global/ch02-jpa/UserBean!com.eldermoraes.ch02.jpa.UserBean&quot;)
-INFORMAÇÕES - Jndi(name=&quot;java:global/ch02-jpa/UserBean&quot;)
-INFORMAÇÕES - Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2cb4c3ab
-INFORMAÇÕES - OpenWebBeans Container is starting...
-INFORMAÇÕES - Adding OpenWebBeansPlugin : [CdiPlugin]
-INFORMAÇÕES - All injection points were validated successfully.
-INFORMAÇÕES - OpenWebBeans Container has started, it took 76 ms.
-INFORMAÇÕES - Created Ejb(deployment-id=UserBean, ejb-name=UserBean, container=Default Stateless Container)
-INFORMAÇÕES - Started Ejb(deployment-id=UserBean, ejb-name=UserBean, container=Default Stateless Container)
-INFORMAÇÕES - Deployed Application(path=/Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa)
-WARN - SQL Error: -5501, SQLState: 42501
-ERROR - user lacks privilege or object not found: USER
-GRAVE - EjbTransactionUtil.handleSystemException: org.hibernate.exception.SQLGrammarException: could not prepare statement
-javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1763)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1677)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1683)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1187)
-	at org.apache.openejb.persistence.JtaEntityManager.persist(JtaEntityManager.java:149)
-	at com.eldermoraes.ch02.jpa.UserBean.add(UserBean.java:24)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext$Invocation.invoke(ReflectionInvocationContext.java:192)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext.proceed(ReflectionInvocationContext.java:173)
-	at org.apache.openejb.monitoring.StatsInterceptor.record(StatsInterceptor.java:181)
-	at org.apache.openejb.monitoring.StatsInterceptor.invoke(StatsInterceptor.java:100)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext$Invocation.invoke(ReflectionInvocationContext.java:192)
-	at org.apache.openejb.core.interceptor.ReflectionInvocationContext.proceed(ReflectionInvocationContext.java:173)
-	at org.apache.openejb.core.interceptor.InterceptorStack.invoke(InterceptorStack.java:85)
-	at org.apache.openejb.core.stateless.StatelessContainer._invoke(StatelessContainer.java:227)
-	at org.apache.openejb.core.stateless.StatelessContainer.invoke(StatelessContainer.java:194)
-	at org.apache.openejb.core.ivm.EjbObjectProxyHandler.synchronizedBusinessMethod(EjbObjectProxyHandler.java:317)
-	at org.apache.openejb.core.ivm.EjbObjectProxyHandler.businessMethod(EjbObjectProxyHandler.java:312)
-	at org.apache.openejb.core.ivm.EjbObjectProxyHandler._invoke(EjbObjectProxyHandler.java:92)
-	at org.apache.openejb.core.ivm.BaseEjbProxyHandler.invoke(BaseEjbProxyHandler.java:325)
-	at com.eldermoraes.ch02.jpa.UserBean$$LocalBeanProxy.add(com/eldermoraes/ch02/jpa/UserBean.java)
-	at com.eldermoraes.ch02.jpa.Ch02JpaTest.persistData(Ch02JpaTest.java:52)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement
-	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:80)
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:196)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareStatement(StatementPreparerImpl.java:122)
-	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.prepare(IdentityGenerator.java:89)
-	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:55)
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032)
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3556)
-	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:97)
-	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:480)
-	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:191)
-	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:175)
-	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:210)
-	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:324)
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:288)
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:194)
-	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:125)
-	at org.hibernate.jpa.event.internal.core.JpaPersistEventListener.saveWithGeneratedId(JpaPersistEventListener.java:84)
-	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:206)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:149)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:75)
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:807)
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:780)
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:785)
-	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1181)
-	... 56 more
-Caused by: java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: USER
-	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
-	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
-	at org.hsqldb.jdbc.JDBCPreparedStatement.&lt;init&gt;(Unknown Source)
-	at org.hsqldb.jdbc.JDBCConnection.prepareStatement(Unknown Source)
-	at org.apache.commons.dbcp.DelegatingConnection.prepareStatement(DelegatingConnection.java:508)
-	at org.apache.commons.dbcp.DelegatingConnection.prepareStatement(DelegatingConnection.java:508)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$2.doPrepare(StatementPreparerImpl.java:124)
-	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:186)
-	... 78 more
-Caused by: org.hsqldb.HsqlException: user lacks privilege or object not found: USER
-	at org.hsqldb.error.Error.error(Unknown Source)
-	at org.hsqldb.error.Error.error(Unknown Source)
-	at org.hsqldb.SchemaManager.getTable(Unknown Source)
-	at org.hsqldb.ParserDQL.readTableName(Unknown Source)
-	at org.hsqldb.ParserDQL.readRangeVariableForDataChange(Unknown Source)
-	at org.hsqldb.ParserDML.compileInsertStatement(Unknown Source)
-	at org.hsqldb.ParserCommand.compilePart(Unknown Source)
-	at org.hsqldb.ParserCommand.compileStatement(Unknown Source)
-	at org.hsqldb.Session.compileStatement(Unknown Source)
-	at org.hsqldb.StatementManager.compile(Unknown Source)
-	at org.hsqldb.Session.execute(Unknown Source)
-	... 84 more
-INFORMAÇÕES - Undeploying app: /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa
-INFORMAÇÕES - Using &apos;openjpa.Log=org.apache.openejb.openjpa.JULOpenJPALogFactory&apos;
-INFORMAÇÕES - Undeployed app: /Users/eldermoraes/Developer/git/eldermoraes/javaee8-cookbook/chapter02/ch02-jpa
-INFORMAÇÕES - Destroying OpenEJB container
-INFORMAÇÕES - Closing DataSource: userDb
-INFORMAÇÕES - Closing DataSource: userDbNonJta
-</system-out>
-  </testcase>
+  <testcase classname="com.eldermoraes.ch02.jpa.Ch02JpaTest" name="persistData" time="3.144"/>
 </testsuite>

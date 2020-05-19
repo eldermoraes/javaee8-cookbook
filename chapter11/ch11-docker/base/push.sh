@@ -1,1 +1,2 @@
-docker push eldermoraes/gf-javaee-jdk8
+docker login
+docker push eldermoraes/gf-jakartaee-jdk8

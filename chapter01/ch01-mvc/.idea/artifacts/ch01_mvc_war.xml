@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ch01-mvc:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ch01-mvc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ch01-mvc-1.0.war">
+      <element id="artifact" artifact-name="ch01-mvc:war exploded" />
+    </root>
+  </artifact>
+</component>

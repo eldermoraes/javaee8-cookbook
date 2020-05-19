@@ -3,7 +3,7 @@ com/eldermoraes/ch02/cdi/User.class
 com/eldermoraes/ch02/cdi/UserFactory.class
 com/eldermoraes/ch02/cdi/profile/ImplOperator.class
 com/eldermoraes/ch02/cdi/profile/ProfileType.class
-com/eldermoraes/ch02/cdi/profile/Profile.class
-com/eldermoraes/ch02/cdi/profile/UserProfile.class
 com/eldermoraes/ch02/cdi/UserService.class
+com/eldermoraes/ch02/cdi/profile/UserProfile.class
+com/eldermoraes/ch02/cdi/profile/Profile.class
 com/eldermoraes/ch02/cdi/Application.class

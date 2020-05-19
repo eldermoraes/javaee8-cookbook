@@ -1,1 +1,1 @@
-docker push eldermoraes/gf-javaee-cookbook-os
+docker push eldermoraes/gf-jakartaee-cookbook-os
